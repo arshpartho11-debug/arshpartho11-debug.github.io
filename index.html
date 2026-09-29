@@ -1,2801 +1,1789 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Partho | Portfolio</title>
+
+  <meta
+    name="description"
+    content="Personal portfolio of Partho — Education, Research, Debate, Leadership and Human Rights."
+  >
+
+  <style>
+    /* =========================================================
+       ROOT / THEME
+    ========================================================= */
+
+    :root {
+      --bg: #050c16;
+      --bg-soft: #07111d;
+
+      --card: rgba(10, 25, 38, 0.58);
+      --card-solid: #0a1926;
+
+      --teal: #1b938f;
+      --teal-light: #24aaa4;
+      --teal-soft: rgba(27, 147, 143, 0.18);
+
+      --white: #f4f7fb;
+      --text: #c8d1dc;
+      --muted: #8996a5;
+
+      --border: rgba(255, 255, 255, 0.08);
+      --border-teal: rgba(36, 170, 164, 0.35);
+
+      --shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+
+      --radius: 24px;
+      --transition: 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(27, 147, 143, 0.07),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 85% 75%,
+          rgba(27, 147, 143, 0.05),
+          transparent 25%
+        ),
+        var(--bg);
+
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::selection {
+      background: var(--teal);
+      color: white;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
-    <meta charset="UTF-8">
+    button {
+      font: inherit;
+    }
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
 
-    <title>M. Biswas Partho | Portfolio</title>
 
-    <meta
-        name="description"
-        content="M. Biswas Partho — Special & Inclusive Education Student, Research Enthusiast, Debater and MUNner."
-    >
+    /* =========================================================
+       BACKGROUND EFFECTS
+    ========================================================= */
 
+    .bg-grid {
+      position: fixed;
+      inset: 0;
 
-    <style>
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px
+        );
 
-        /* =====================================================
-           ROOT / GLOBAL
-        ===================================================== */
+      background-size: 60px 60px;
 
-        :root {
+      pointer-events: none;
+      z-index: -10;
 
-            --bg: #050c16;
-            --bg-soft: #07111d;
-            --card: rgba(10, 25, 38, 0.58);
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
+    }
 
-            --teal: #1b938f;
-            --teal-light: #24aaa4;
-            --teal-soft: rgba(27, 147, 143, 0.18);
+    .noise {
+      position: fixed;
+      inset: 0;
 
-            --white: #f4f7fb;
-            --text: #c8d1dc;
-            --muted: #8996a5;
+      opacity: 0.025;
+      pointer-events: none;
 
-            --border: rgba(255,255,255,0.08);
-            --border-teal: rgba(27,147,143,0.38);
+      z-index: 9999;
+    }
 
-            --shadow:
-                0 25px 80px rgba(0,0,0,0.42);
 
-            --transition:
-                0.4s cubic-bezier(.2,.8,.2,1);
-        }
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
 
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
 
-        * {
+      width: 100%;
 
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      padding: 20px 0;
 
+      z-index: 1000;
 
-        html {
+      transition: var(--transition);
+    }
 
-            scroll-behavior: smooth;
+    header.scrolled {
+      padding: 12px 0;
 
-            scroll-padding-top: 90px;
-        }
+      background: rgba(5, 12, 22, 0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
+      border-bottom: 1px solid var(--border);
+    }
 
-        body {
+    .navbar {
+      width: min(1180px, calc(100% - 40px));
+      margin: auto;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-            background:
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(27,147,143,0.06),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 80% 70%,
-                    rgba(27,147,143,0.05),
-                    transparent 30%
-                ),
-                var(--bg);
+      padding: 10px 14px 10px 20px;
 
-            color: var(--white);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 999px;
 
-            overflow-x: hidden;
-        }
+      background: rgba(7, 17, 29, 0.55);
 
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
-        body::selection {
+      box-shadow:
+        0 10px 40px rgba(0,0,0,0.16);
+    }
 
-            background: var(--teal);
-            color: white;
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
 
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
 
-        a {
+    .logo-mark {
+      width: 38px;
+      height: 38px;
 
-            color: inherit;
-        }
+      display: grid;
+      place-items: center;
 
+      border-radius: 50%;
 
-        /* =====================================================
-           SCROLLBAR
-        ===================================================== */
+      background:
+        linear-gradient(
+          135deg,
+          var(--teal),
+          var(--teal-light)
+        );
 
-        ::-webkit-scrollbar {
+      color: white;
 
-            width: 7px;
-        }
+      font-size: 16px;
+      font-weight: 900;
 
+      box-shadow:
+        0 0 25px rgba(27,147,143,0.22);
+    }
 
-        ::-webkit-scrollbar-track {
+    .logo-text {
+      display: flex;
+      flex-direction: column;
 
-            background: var(--bg);
-        }
+      line-height: 1;
+    }
 
+    .logo-text strong {
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
 
-        ::-webkit-scrollbar-thumb {
+    .logo-text span {
+      margin-top: 4px;
 
-            background: var(--teal);
+      color: var(--muted);
 
-            border-radius: 20px;
-        }
+      font-size: 8px;
+      letter-spacing: 3px;
+    }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
 
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
+      list-style: none;
+    }
 
-        nav {
+    .nav-links a {
+      position: relative;
 
-            position: fixed;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
 
-            top: 0;
-            left: 0;
+      padding: 10px 15px;
 
-            width: 100%;
+      border-radius: 999px;
 
-            height: 76px;
+      color: var(--muted);
 
-            padding:
-                0 5%;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
 
-            display: flex;
+      transition: var(--transition);
+    }
 
-            align-items: center;
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: white;
+      background: var(--teal-soft);
+    }
 
-            justify-content: space-between;
+    .nav-links a.active {
+      box-shadow:
+        inset 0 0 0 1px rgba(36,170,164,0.16);
+    }
 
-            background:
-                rgba(5,12,22,0.72);
+    .menu-toggle {
+      display: none;
 
-            backdrop-filter:
-                blur(20px);
+      width: 42px;
+      height: 42px;
 
-            -webkit-backdrop-filter:
-                blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 50%;
 
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.055);
+      background: rgba(255,255,255,0.04);
 
-            z-index: 1000;
+      color: white;
 
-            transition:
-                0.4s ease;
-        }
+      cursor: pointer;
+    }
 
 
-        nav.scrolled {
+    /* =========================================================
+       HERO
+    ========================================================= */
 
-            background:
-                rgba(5,12,22,0.90);
+    .hero {
+      min-height: 100vh;
 
-            box-shadow:
-                0 10px 40px rgba(0,0,0,0.25);
-        }
+      display: flex;
+      align-items: center;
 
+      padding:
+        150px 0
+        90px;
+    }
 
-        /* LOGO */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
 
-        .logo {
+      align-items: center;
 
-            display: flex;
+      gap: 80px;
+    }
 
-            align-items: center;
+    .hero-photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-            gap: 12px;
+    /* ---------------------------------------------------------
+       PHOTO WRAPPER
+    --------------------------------------------------------- */
 
-            text-decoration: none;
-        }
+    .photo-wrapper {
+      position: relative;
 
+      width: 450px;
+      height: 500px;
 
-        .logo-mark {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-            width: 40px;
-            height: 40px;
+      animation:
+        photoFloat 6s ease-in-out infinite;
+    }
 
-            border-radius: 12px;
+    @keyframes photoFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
 
-            display: flex;
+      50% {
+        transform: translateY(-10px);
+      }
+    }
 
-            align-items: center;
-            justify-content: center;
+    /* Glow behind photo */
 
-            background:
-                var(--teal);
+    .photo-glow {
+      position: absolute;
 
-            color: white;
+      width: 400px;
+      height: 400px;
 
-            font-size: 18px;
+      border-radius: 50%;
 
-            font-weight: 800;
+      background:
+        radial-gradient(
+          circle,
+          rgba(27,147,143,0.32),
+          rgba(27,147,143,0.08) 45%,
+          transparent 72%
+        );
 
-            box-shadow:
-                0 0 25px
-                rgba(27,147,143,0.22);
-        }
+      filter: blur(18px);
 
+      transition:
+        var(--transition);
 
-        .logo-text {
+      z-index: 0;
+    }
 
-            display: flex;
+    /* Back frame */
 
-            flex-direction: column;
+    .photo-frame-back {
+      position: absolute;
 
-            line-height: 1;
-        }
+      width: 400px;
+      height: 400px;
 
+      border-radius: 50%;
 
-        .logo-main {
+      border: 1px solid
+        rgba(36,170,164,0.30);
 
-            font-size: 18px;
+      background:
+        rgba(27,147,143,0.04);
 
-            font-weight: 800;
+      transform:
+        rotate(-5deg)
+        translate(-9px, 6px);
 
-            letter-spacing: 1px;
-        }
+      transition:
+        var(--transition);
 
+      z-index: 1;
+    }
 
-        .logo-sub {
+    /* Main photo frame */
 
-            margin-top: 6px;
+    .photo-container {
+      position: relative;
 
-            font-size: 9px;
+      width: 400px;
+      height: 400px;
 
-            letter-spacing: 3px;
+      border-radius: 50%;
 
-            color: var(--teal-light);
+      overflow: hidden;
 
-            font-weight: 700;
-        }
+      border:
+        1px solid
+        rgba(255,255,255,0.12);
 
+      box-shadow:
+        0 25px 70px rgba(0,0,0,0.35);
 
-        /* NAV LINKS */
+      background: #111;
 
-        .nav-links {
+      transition:
+        clip-path 0.65s cubic-bezier(0.2,0.7,0.2,1),
+        border-radius 0.65s cubic-bezier(0.2,0.7,0.2,1),
+        transform 0.65s cubic-bezier(0.2,0.7,0.2,1);
 
-            display: flex;
+      z-index: 2;
+    }
 
-            align-items: center;
+    .photo-container img {
+      width: 100%;
+      height: 100%;
 
-            gap: 7px;
+      object-fit: cover;
 
-            list-style: none;
-        }
+      filter:
+        grayscale(100%)
+        contrast(1.16)
+        brightness(1.04);
 
+      transform: scale(1);
 
-        .nav-links a {
+      transition:
+        filter 0.55s ease,
+        transform 0.65s cubic-bezier(0.2,0.7,0.2,1);
+    }
 
-            display: flex;
+    /* Decorative dots */
 
-            align-items: center;
+    .photo-dots {
+      position: absolute;
 
-            gap: 8px;
+      right: 4px;
+      bottom: 42px;
 
-            padding:
-                10px 15px;
+      display: grid;
+      grid-template-columns: repeat(3, 6px);
+      gap: 6px;
 
-            border-radius: 25px;
+      z-index: 4;
+    }
 
-            text-decoration: none;
+    .photo-dots span {
+      width: 5px;
+      height: 5px;
 
-            color: #bfc8d3;
+      border-radius: 50%;
 
-            font-size: 12px;
+      background: var(--teal-light);
 
-            font-weight: 700;
+      opacity: 0.7;
+    }
 
-            letter-spacing: 1px;
+    /* ---------------------------------------------------------
+       PHOTO HOVER
+       Circle -> Symmetric Hexagon
+    --------------------------------------------------------- */
 
-            transition:
-                var(--transition);
-        }
+    .photo-wrapper:hover .photo-container {
+      border-radius: 0;
 
+      clip-path:
+        polygon(
+          25% 3%,
+          75% 3%,
+          100% 50%,
+          75% 97%,
+          25% 97%,
+          0% 50%
+        );
 
-        .nav-links a:hover,
-        .nav-links a.active {
+      transform: scale(1.015);
+    }
 
-            color: var(--teal-light);
+    .photo-wrapper:hover .photo-container img {
+      filter: none;
 
-            background:
-                rgba(27,147,143,0.10);
+      transform: scale(1.035);
+    }
 
-            box-shadow:
-                inset 0 0 0
-                1px rgba(27,147,143,0.08);
-        }
+    .photo-wrapper:hover .photo-frame-back {
+      border-radius: 0;
 
+      clip-path:
+        polygon(
+          25% 3%,
+          75% 3%,
+          100% 50%,
+          75% 97%,
+          25% 97%,
+          0% 50%
+        );
 
-        .nav-contact {
+      transform:
+        rotate(5deg)
+        translate(9px, -5px)
+        scale(1.02);
+    }
 
-            padding:
-                11px 23px !important;
+    .photo-wrapper:hover .photo-glow {
+      border-radius: 0;
 
-            color: white !important;
+      clip-path:
+        polygon(
+          25% 3%,
+          75% 3%,
+          100% 50%,
+          75% 97%,
+          25% 97%,
+          0% 50%
+        );
 
-            background:
-                var(--teal) !important;
+      transform: scale(1.05);
 
-            box-shadow:
-                0 8px 25px
-                rgba(27,147,143,0.20);
-        }
+      opacity: 0.85;
+    }
 
 
-        .nav-contact:hover {
+    /* =========================================================
+       HERO CONTENT
+    ========================================================= */
 
-            transform:
-                translateY(-2px);
+    .hero-content {
+      max-width: 650px;
+    }
 
-            background:
-                var(--teal-light) !important;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
 
-            color: white !important;
+      margin-bottom: 18px;
 
-            box-shadow:
-                0 12px 30px
-                rgba(27,147,143,0.30);
-        }
+      color: var(--teal-light);
 
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
 
-        /* MOBILE MENU BUTTON */
+    .eyebrow::before {
+      content: "";
 
-        .menu-btn {
+      width: 30px;
+      height: 1px;
 
-            display: none;
+      background: var(--teal-light);
+    }
 
-            width: 42px;
-            height: 42px;
+    .hero h1 {
+      font-size: clamp(48px, 6.3vw, 88px);
 
-            border:
-                1px solid var(--border);
+      line-height: 0.98;
 
-            border-radius: 12px;
+      letter-spacing: -4px;
 
-            background:
-                rgba(255,255,255,0.035);
+      font-weight: 900;
 
-            color: white;
+      margin-bottom: 24px;
+    }
 
-            cursor: pointer;
+    .hero h1 span {
+      display: block;
 
-            font-size: 20px;
-        }
+      color: transparent;
 
+      -webkit-text-stroke:
+        1px rgba(255,255,255,0.45);
 
-        /* =====================================================
-           GENERAL SECTION
-        ===================================================== */
+      transition: var(--transition);
+    }
 
-        section {
+    .hero h1 span:hover {
+      color: var(--teal-light);
 
-            position: relative;
-        }
+      -webkit-text-stroke-color:
+        var(--teal-light);
+    }
 
+    .hero-description {
+      max-width: 590px;
 
-        .section {
+      margin-bottom: 30px;
 
-            padding:
-                110px 7%;
+      color: var(--text);
 
-            max-width: 1400px;
+      font-size: 16px;
+      line-height: 1.85;
+    }
 
-            margin:
-                0 auto;
-        }
+    .hero-description strong {
+      color: white;
+    }
 
 
-        .section-heading {
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
 
-            text-align: center;
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
 
-            margin-bottom: 65px;
-        }
+      flex-wrap: wrap;
+    }
 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
 
-        .section-label {
+      min-height: 48px;
 
-            display: inline-block;
+      padding: 0 22px;
 
-            color: var(--teal-light);
+      border-radius: 999px;
 
-            font-size: 11px;
+      font-size: 11px;
+      font-weight: 800;
 
-            font-weight: 800;
+      letter-spacing: 1px;
 
-            letter-spacing: 4px;
+      transition: var(--transition);
+    }
 
-            margin-bottom: 14px;
-        }
+    .primary-btn {
+      background:
+        linear-gradient(
+          135deg,
+          var(--teal),
+          var(--teal-light)
+        );
 
+      color: white;
 
-        .section-heading h2 {
+      box-shadow:
+        0 12px 30px
+        rgba(27,147,143,0.18);
+    }
 
-            font-size: clamp(35px, 5vw, 55px);
+    .primary-btn:hover {
+      transform: translateY(-3px);
 
-            line-height: 1.05;
+      box-shadow:
+        0 18px 40px
+        rgba(27,147,143,0.30);
+    }
 
-            letter-spacing: -2px;
+    .secondary-btn {
+      border:
+        1px solid
+        rgba(255,255,255,0.10);
 
-            margin-bottom: 18px;
-        }
+      background:
+        rgba(255,255,255,0.035);
 
+      color: var(--text);
 
-        .section-heading h2 span {
+      backdrop-filter: blur(10px);
+    }
 
-            color: var(--teal-light);
-        }
+    .secondary-btn:hover {
+      border-color:
+        var(--border-teal);
 
+      background:
+        var(--teal-soft);
 
-        .section-heading p {
+      color: white;
 
-            max-width: 650px;
+      transform: translateY(-3px);
+    }
 
-            margin: 0 auto;
 
-            color: var(--muted);
+    /* =========================================================
+       GENERAL SECTION
+    ========================================================= */
 
-            line-height: 1.8;
+    section:not(.hero) {
+      padding: 100px 0;
+    }
 
-            font-size: 15px;
-        }
+    .section-heading {
+      margin-bottom: 50px;
+    }
 
+    .section-label {
+      margin-bottom: 10px;
 
-        /* =====================================================
-           HERO
-        ===================================================== */
+      color: var(--teal-light);
 
-        .hero {
+      font-size: 10px;
+      font-weight: 800;
 
-            min-height: 100vh;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
 
-            padding:
-                125px 7% 80px;
+    .section-heading h2 {
+      font-size: clamp(36px, 5vw, 60px);
 
-            display: flex;
+      line-height: 1;
 
-            align-items: center;
+      letter-spacing: -2px;
+    }
 
-            justify-content: center;
+    .section-heading h2 span {
+      color: var(--teal-light);
+    }
 
-            gap: clamp(60px, 8vw, 120px);
 
-            overflow: hidden;
-        }
+    /* =========================================================
+       GLASS CARDS
+    ========================================================= */
 
+    .glass {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.018)
+        );
 
-        /* Background glow */
+      border:
+        1px solid
+        var(--border);
 
-        .hero::before {
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
-            content: "";
+      box-shadow:
+        var(--shadow);
+    }
 
-            position: absolute;
 
-            width: 600px;
-            height: 600px;
+    /* =========================================================
+       ABOUT
+    ========================================================= */
 
-            left: 18%;
-            top: 5%;
+    .about-grid {
+      display: grid;
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(27,147,143,0.17),
-                    transparent 68%
-                );
+      grid-template-columns:
+        1.15fr
+        0.85fr;
 
-            filter:
-                blur(25px);
+      gap: 24px;
+    }
 
-            animation:
-                heroGlow 7s ease-in-out infinite;
+    .about-main {
+      padding: 42px;
 
-            pointer-events: none;
-        }
+      border-radius: var(--radius);
+    }
 
+    .about-main h3 {
+      margin-bottom: 20px;
 
-        .hero::after {
+      font-size: 34px;
 
-            content: "";
+      letter-spacing: -1px;
+    }
 
-            position: absolute;
+    .about-main p {
+      color: var(--text);
 
-            width: 400px;
-            height: 400px;
+      line-height: 1.9;
+    }
 
-            right: -150px;
-            bottom: -150px;
+    .about-main p + p {
+      margin-top: 16px;
+    }
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(27,147,143,0.10),
-                    transparent 70%
-                );
+    .mini-grid {
+      display: grid;
 
-            filter:
-                blur(30px);
+      grid-template-columns: repeat(2, 1fr);
 
-            pointer-events: none;
-        }
+      gap: 16px;
+    }
 
+    .mini-card {
+      min-height: 180px;
 
-        @keyframes heroGlow {
+      padding: 26px;
 
-            0%,100% {
+      border-radius: 20px;
 
-                transform:
-                    scale(1);
+      transition: var(--transition);
+    }
 
-                opacity:
-                    .65;
-            }
+    .mini-card:hover {
+      transform: translateY(-7px);
 
-            50% {
+      border-color:
+        var(--border-teal);
 
-                transform:
-                    scale(1.15);
+      background:
+        rgba(27,147,143,0.08);
+    }
 
-                opacity:
-                    1;
-            }
-        }
+    .mini-icon {
+      width: 42px;
+      height: 42px;
 
+      display: grid;
+      place-items: center;
 
-        /* =====================================================
-           PHOTO AREA
-        ===================================================== */
+      margin-bottom: 22px;
 
-        .photo-wrapper {
+      border-radius: 13px;
 
-            width: 450px;
-            height: 500px;
+      background:
+        var(--teal-soft);
 
-            position: relative;
+      color: var(--teal-light);
 
-            display: flex;
+      font-weight: 900;
+    }
 
-            align-items: center;
-            justify-content: center;
+    .mini-card h4 {
+      margin-bottom: 7px;
 
-            flex-shrink: 0;
+      font-size: 17px;
+    }
 
-            animation:
-                photoFloat 6s ease-in-out infinite;
-        }
+    .mini-card p {
+      color: var(--muted);
 
+      font-size: 13px;
+    }
 
-        @keyframes photoFloat {
 
-            0%,100% {
+    /* =========================================================
+       EDUCATION
+    ========================================================= */
 
-                transform:
-                    translateY(0);
-            }
+    .timeline {
+      position: relative;
 
-            50% {
+      display: grid;
 
-                transform:
-                    translateY(-10px);
-            }
-        }
+      gap: 18px;
+    }
 
+    .timeline::before {
+      content: "";
 
-        /* PHOTO GLOW */
+      position: absolute;
 
-        .photo-glow {
+      left: 23px;
+      top: 25px;
+      bottom: 25px;
 
-            position: absolute;
+      width: 1px;
 
-            width: 420px;
-            height: 420px;
+      background:
+        linear-gradient(
+          to bottom,
+          var(--teal),
+          rgba(27,147,143,0)
+        );
+    }
 
-            border-radius: 50%;
+    .timeline-card {
+      position: relative;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--teal),
-                    #0b6564,
-                    var(--teal-light)
-                );
+      display: grid;
 
-            filter:
-                blur(45px);
+      grid-template-columns: 48px 1fr;
 
-            opacity:
-                .20;
+      gap: 20px;
 
-            transition:
-                var(--transition);
+      padding: 25px;
 
-            animation:
-                photoGlowPulse 5s ease-in-out infinite;
-        }
+      border-radius: 20px;
 
+      transition: var(--transition);
+    }
 
-        @keyframes photoGlowPulse {
+    .timeline-card:hover {
+      transform: translateX(6px);
 
-            0%,100% {
+      border-color:
+        var(--border-teal);
+    }
 
-                transform:
-                    scale(.94);
+    .timeline-dot {
+      position: relative;
 
-                opacity:
-                    .16;
-            }
+      width: 16px;
+      height: 16px;
 
-            50% {
+      margin-top: 5px;
 
-                transform:
-                    scale(1.08);
+      border-radius: 50%;
 
-                opacity:
-                    .28;
-            }
-        }
+      background: var(--teal-light);
 
+      box-shadow:
+        0 0 0 6px
+        rgba(36,170,164,0.10);
+    }
 
-        /* BACK FRAME */
+    .timeline-year {
+      margin-bottom: 5px;
 
-        .photo-frame-back {
+      color: var(--teal-light);
 
-            position: absolute;
+      font-size: 10px;
+      font-weight: 800;
 
-            width: 425px;
-            height: 425px;
+      letter-spacing: 2px;
+    }
 
-            border:
-                1px solid
-                rgba(27,147,143,0.38);
+    .timeline-card h3 {
+      margin-bottom: 5px;
 
-            border-radius: 50%;
+      font-size: 19px;
+    }
 
-            transform:
-                rotate(-5deg)
-                translate(-8px,5px);
+    .timeline-card p {
+      color: var(--muted);
 
-            background:
-                rgba(27,147,143,0.035);
+      font-size: 13px;
+    }
 
-            transition:
-                transform .8s
-                cubic-bezier(.2,.8,.2,1),
-                border-color .5s ease,
-                clip-path .8s ease,
-                border-radius .8s ease;
 
-            animation:
-                frameFloat 6s ease-in-out infinite;
-        }
+    /* =========================================================
+       LEADERSHIP
+    ========================================================= */
 
+    .leadership-grid {
+      display: grid;
 
-        @keyframes frameFloat {
+      grid-template-columns:
+        repeat(3, 1fr);
 
-            0%,100% {
+      gap: 18px;
+    }
 
-                transform:
-                    rotate(-5deg)
-                    translate(-8px,5px);
-            }
+    .lead-card {
+      position: relative;
 
-            50% {
+      min-height: 210px;
 
-                transform:
-                    rotate(-2deg)
-                    translate(-10px,-5px);
-            }
-        }
+      padding: 28px;
 
+      border-radius: 22px;
 
-        /* MAIN PHOTO */
+      overflow: hidden;
 
-        .photo-container {
+      transition: var(--transition);
+    }
 
-            width: 400px;
-            height: 400px;
+    .lead-card::before {
+      content: "";
 
-            position: relative;
+      position: absolute;
 
-            overflow: hidden;
+      width: 130px;
+      height: 130px;
 
-            border-radius: 50%;
+      right: -60px;
+      bottom: -60px;
 
-            clip-path: none;
+      border-radius: 50%;
 
-            background:
-                #111b27;
+      background:
+        rgba(27,147,143,0.08);
 
-            border:
-                2px solid
-                rgba(27,147,143,0.60);
+      transition: var(--transition);
+    }
 
-            box-shadow:
-                0 25px 80px
-                rgba(0,0,0,0.65);
+    .lead-card:hover {
+      transform: translateY(-8px);
 
-            transition:
-                transform .8s
-                cubic-bezier(.2,.8,.2,1),
-                border-radius .8s ease,
-                clip-path .8s ease,
-                border-color .5s ease,
-                filter .5s ease;
-        }
+      border-color:
+        var(--border-teal);
+    }
 
+    .lead-card:hover::before {
+      transform: scale(1.5);
+    }
 
-        .photo-container img {
+    .lead-number {
+      color: var(--teal-light);
 
-            width: 100%;
-            height: 100%;
+      font-size: 11px;
+      font-weight: 900;
 
-            object-fit: cover;
+      letter-spacing: 2px;
 
-            object-position:
-                center top;
+      margin-bottom: 35px;
+    }
 
-            display: block;
+    .lead-card h3 {
+      margin-bottom: 8px;
 
-            filter:
-                grayscale(100%)
-                contrast(1.16)
-                brightness(1.04);
+      font-size: 18px;
+    }
 
-            transition:
-                filter .7s ease,
-                transform .9s
-                cubic-bezier(.2,.8,.2,1);
-        }
+    .lead-card p {
+      color: var(--muted);
 
+      font-size: 13px;
+      line-height: 1.7;
+    }
 
-        /* PHOTO SHINE */
 
-        .photo-container::after {
+    /* =========================================================
+       SKILLS
+    ========================================================= */
 
-            content: "";
+    .skills-grid {
+      display: grid;
 
-            position: absolute;
+      grid-template-columns:
+        repeat(4, 1fr);
 
-            top: -120%;
-            left: -100%;
+      gap: 18px;
+    }
 
-            width: 55%;
-            height: 300%;
+    .skill-box {
+      padding: 28px;
 
-            background:
-                linear-gradient(
-                    110deg,
-                    transparent,
-                    rgba(255,255,255,.24),
-                    transparent
-                );
+      min-height: 210px;
 
-            transform:
-                rotate(20deg);
+      border-radius: 22px;
 
-            opacity: 0;
+      transition: var(--transition);
+    }
 
-            pointer-events: none;
-        }
+    .skill-box:hover {
+      transform: translateY(-7px);
 
+      border-color:
+        var(--border-teal);
+    }
 
-        /* PHOTO HOVER */
+    .skill-box h3 {
+      margin-bottom: 20px;
 
-        .photo-wrapper:hover
-        .photo-container {
+      font-size: 17px;
+    }
 
-            transform:
-                rotate(3deg)
-                scale(1.035);
+    .skill-list {
+      display: flex;
 
-            border-radius: 0;
+      flex-wrap: wrap;
 
-            clip-path:
-                polygon(
-                    25% 3%,
-                    75% 3%,
-                    100% 50%,
-                    75% 97%,
-                    25% 97%,
-                    0% 50%
-                );
+      gap: 8px;
+    }
 
-            border-color:
-                rgba(36,170,164,0.80);
+    .skill-tag {
+      padding: 7px 11px;
 
-            filter:
-                drop-shadow(
-                    0 0 25px
-                    rgba(27,147,143,0.30)
-                );
-        }
+      border-radius: 999px;
 
+      background:
+        rgba(255,255,255,0.045);
 
-        .photo-wrapper:hover
-        .photo-container img {
+      border:
+        1px solid
+        rgba(255,255,255,0.06);
 
-            /* RAW ORIGINAL COLOUR */
+      color: var(--text);
 
-            filter: none;
+      font-size: 10px;
+      font-weight: 700;
+    }
 
-            transform:
-                scale(1.035);
-        }
+    .skill-tag:hover {
+      color: white;
 
+      border-color:
+        var(--border-teal);
 
-        .photo-wrapper:hover
-        .photo-frame-back {
+      background:
+        var(--teal-soft);
+    }
 
-            transform:
-                rotate(5deg)
-                translate(9px,-5px)
-                scale(1.02);
 
-            border-radius: 0;
+    /* =========================================================
+       CV CLOSING BANNER
+    ========================================================= */
 
-            clip-path:
-                polygon(
-                    25% 3%,
-                    75% 3%,
-                    100% 50%,
-                    75% 97%,
-                    25% 97%,
-                    0% 50%
-                );
+    .cv-section {
+      padding-top: 80px !important;
+      padding-bottom: 100px !important;
+    }
 
-            border-color:
-                rgba(36,170,164,0.65);
-        }
+    .cv-card {
+      position: relative;
 
+      overflow: hidden;
 
-        .photo-wrapper:hover
-        .photo-glow {
+      isolation: isolate;
 
-            transform:
-                scale(1.12);
+      padding:
+        80px 50px;
 
-            opacity:
-                .42;
+      border-radius: 32px;
 
-            border-radius: 0;
+      text-align: center;
 
-            clip-path:
-                polygon(
-                    25% 3%,
-                    75% 3%,
-                    100% 50%,
-                    75% 97%,
-                    25% 97%,
-                    0% 50%
-                );
+      background:
+        linear-gradient(
+          135deg,
+          rgba(12,34,48,0.82),
+          rgba(6,18,30,0.72)
+        );
 
-            filter:
-                blur(34px);
-        }
+      border:
+        1px solid
+        rgba(36,170,164,0.18);
 
+      box-shadow:
+        0 30px 90px
+        rgba(0,0,0,0.32);
+    }
 
-        .photo-wrapper:hover
-        .photo-container::after {
+    /* Big PARTHO watermark */
 
-            opacity:
-                1;
+    .cv-watermark {
+      position: absolute;
 
-            animation:
-                photoShine 1.1s ease forwards;
-        }
+      left: 50%;
+      top: 50%;
 
+      transform:
+        translate(-50%, -50%);
 
-        @keyframes photoShine {
+      font-size:
+        clamp(90px, 18vw, 230px);
 
-            0% {
+      font-weight: 900;
 
-                left:
-                    -90%;
-            }
+      letter-spacing: 12px;
 
-            100% {
+      line-height: 1;
 
-                left:
-                    150%;
-            }
-        }
+      color:
+        rgba(255,255,255,0.025);
 
+      white-space: nowrap;
 
-        /* DECORATIVE DOTS */
+      pointer-events: none;
+      user-select: none;
 
-        .photo-wrapper::before {
+      z-index: -1;
+    }
 
-            content: "";
+    /* Content stays above watermark */
 
-            position: absolute;
+    .cv-content {
+      position: relative;
 
-            width: 8px;
-            height: 8px;
+      z-index: 2;
+    }
 
-            border-radius: 50%;
+    /* Slogan */
 
-            background:
-                var(--teal-light);
+    .cv-slogan {
+      margin-bottom: 14px;
 
-            box-shadow:
-                0 0 15px var(--teal-light),
-                0 0 30px var(--teal-light);
+      color: var(--teal-light);
 
-            top: 42px;
-            right: 8px;
+      font-size: 12px;
+      font-weight: 800;
 
-            animation:
-                dotMove 3s ease-in-out infinite;
-        }
+      letter-spacing: 4px;
 
+      text-transform: uppercase;
 
-        .photo-wrapper::after {
+      opacity: 0.95;
+    }
 
-            content: "";
+    .cv-card h2 {
+      margin-bottom: 16px;
 
-            position: absolute;
+      font-size:
+        clamp(34px, 5vw, 58px);
 
-            width: 5px;
-            height: 5px;
+      letter-spacing: -2px;
 
-            border-radius: 50%;
+      line-height: 1;
+    }
 
-            background:
-                #6ed8d4;
+    .cv-card h2 span {
+      color: var(--teal-light);
+    }
 
-            box-shadow:
-                0 0 12px #6ed8d4,
-                0 0 25px #6ed8d4;
+    .cv-card p {
+      max-width: 620px;
 
-            bottom: 50px;
-            left: 15px;
+      margin:
+        0 auto 28px;
 
-            animation:
-                dotMove 4s ease-in-out infinite reverse;
-        }
+      color: var(--text);
 
+      line-height: 1.8;
 
-        @keyframes dotMove {
+      font-size: 14px;
+    }
 
-            0%,100% {
+    /* Subtle glow */
 
-                transform:
-                    translateY(0)
-                    scale(1);
-            }
+    .cv-card::after {
+      content: "";
 
-            50% {
+      position: absolute;
 
-                transform:
-                    translateY(-15px)
-                    scale(1.35);
-            }
-        }
+      width: 260px;
+      height: 260px;
 
+      right: -100px;
+      bottom: -130px;
 
-        /* =====================================================
-           HERO CONTENT
-        ===================================================== */
+      background:
+        rgba(27,147,143,0.10);
 
-        .hero-content {
+      filter: blur(70px);
 
-            max-width: 650px;
+      border-radius: 50%;
 
-            position: relative;
+      pointer-events: none;
 
-            z-index: 5;
-        }
+      z-index: -2;
+    }
 
+    .cv-card::before {
+      content: "";
 
-        .hero-small {
+      position: absolute;
 
-            color:
-                var(--teal-light);
+      width: 220px;
+      height: 220px;
 
-            font-size: 13px;
+      left: -100px;
+      top: -110px;
 
-            letter-spacing: 4px;
+      background:
+        rgba(27,147,143,0.07);
 
-            margin-bottom: 15px;
+      filter: blur(70px);
 
-            font-weight: 800;
-        }
+      border-radius: 50%;
 
+      pointer-events: none;
 
-        .hero h1 {
+      z-index: -2;
+    }
 
-            font-size:
-                clamp(52px, 6vw, 78px);
 
-            line-height:
-                1.01;
+    /* =========================================================
+       CONTACT
+    ========================================================= */
 
-            letter-spacing:
-                -3px;
+    .contact-grid {
+      display: grid;
 
-            margin-bottom:
-                28px;
+      grid-template-columns:
+        1fr 1fr;
 
-            font-weight:
-                900;
+      gap: 20px;
+    }
 
-            text-transform:
-                uppercase;
-        }
+    .contact-card {
+      padding: 35px;
 
+      border-radius: 24px;
+    }
 
-        .hero h1 span {
+    .contact-card h3 {
+      margin-bottom: 12px;
 
-            display: block;
+      font-size: 26px;
+    }
 
-            color:
-                var(--teal);
+    .contact-card p {
+      color: var(--muted);
 
-            text-shadow:
-                0 0 30px
-                rgba(27,147,143,0.18);
-        }
+      margin-bottom: 24px;
+    }
 
+    .contact-links {
+      display: flex;
 
-        .hero-description {
+      flex-wrap: wrap;
 
-            color:
-                var(--text);
+      gap: 10px;
+    }
 
-            font-size:
-                17px;
+    .contact-link {
+      padding: 11px 15px;
 
-            line-height:
-                1.85;
+      border-radius: 999px;
 
-            max-width:
-                620px;
+      background:
+        rgba(255,255,255,0.035);
 
-            margin-bottom:
-                32px;
-        }
+      border:
+        1px solid
+        var(--border);
 
+      color: var(--text);
 
-        .hero-description span {
+      font-size: 11px;
 
-            color:
-                var(--teal-light);
+      transition: var(--transition);
+    }
 
-            font-weight:
-                600;
-        }
+    .contact-link:hover {
+      color: white;
 
+      border-color:
+        var(--border-teal);
 
-        /* HERO BUTTONS */
+      background:
+        var(--teal-soft);
 
-        .hero-buttons {
+      transform: translateY(-3px);
+    }
 
-            display:
-                flex;
 
-            gap:
-                13px;
+    /* =========================================================
+       FOOTER
+    ========================================================= */
 
-            flex-wrap:
-                wrap;
-        }
+    footer {
+      padding: 35px 0 45px;
 
+      border-top:
+        1px solid
+        rgba(255,255,255,0.05);
+    }
 
-        .btn {
+    .footer-inner {
+      display: flex;
 
-            display:
-                inline-flex;
+      align-items: center;
+      justify-content: space-between;
 
-            align-items:
-                center;
+      gap: 20px;
+    }
 
-            justify-content:
-                center;
+    .footer-left {
+      color: var(--muted);
 
-            gap:
-                9px;
+      font-size: 11px;
+    }
 
-            padding:
-                14px 25px;
+    .footer-left strong {
+      color: white;
+    }
 
-            border-radius:
-                30px;
+    .footer-socials {
+      display: flex;
 
-            text-decoration:
-                none;
+      gap: 8px;
+    }
 
-            font-size:
-                13px;
+    .social {
+      width: 38px;
+      height: 38px;
 
-            font-weight:
-                800;
+      display: grid;
+      place-items: center;
 
-            letter-spacing:
-                .4px;
+      border-radius: 50%;
 
-            transition:
-                var(--transition);
-        }
+      background:
+        rgba(255,255,255,0.035);
 
+      border:
+        1px solid
+        var(--border);
 
-        .primary-btn {
+      color: var(--muted);
 
-            background:
-                var(--teal);
+      font-size: 11px;
+      font-weight: 800;
 
-            color:
-                white;
+      transition: var(--transition);
+    }
 
-            box-shadow:
-                0 10px 30px
-                rgba(27,147,143,0.22);
-        }
+    .social:hover {
+      color: white;
 
+      border-color:
+        var(--border-teal);
 
-        .primary-btn:hover {
+      background:
+        var(--teal-soft);
 
-            transform:
-                translateY(-4px);
+      transform: translateY(-3px);
+    }
 
-            background:
-                var(--teal-light);
 
-            box-shadow:
-                0 15px 40px
-                rgba(27,147,143,0.32);
-        }
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
 
+    .reveal {
+      opacity: 0;
 
-        .secondary-btn {
+      transform: translateY(35px);
 
-            color:
-                white;
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+    }
 
-            border:
-                1px solid
-                rgba(255,255,255,0.12);
+    .reveal.show {
+      opacity: 1;
 
-            background:
-                rgba(255,255,255,0.035);
+      transform: translateY(0);
+    }
 
-            backdrop-filter:
-                blur(12px);
-        }
 
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
 
-        .secondary-btn:hover {
+    @media (max-width: 1050px) {
 
-            transform:
-                translateY(-4px);
+      .hero-grid {
+        grid-template-columns: 1fr;
 
-            border-color:
-                var(--teal);
+        text-align: center;
 
-            color:
-                var(--teal-light);
+        gap: 60px;
+      }
 
-            background:
-                rgba(27,147,143,0.07);
+      .hero-photo {
+        order: 1;
+      }
 
-            box-shadow:
-                0 10px 30px
-                rgba(27,147,143,0.12);
-        }
+      .hero-content {
+        order: 2;
 
+        margin: auto;
+      }
 
-        /* =====================================================
-           ABOUT
-        ===================================================== */
+      .eyebrow {
+        justify-content: center;
+      }
 
-        .about-section {
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-            background:
-                linear-gradient(
-                    180deg,
-                    transparent,
-                    rgba(27,147,143,0.025),
-                    transparent
-                );
-        }
+      .hero-buttons {
+        justify-content: center;
+      }
 
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
 
-        .about-grid {
+      .skills-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
 
-            display:
-                grid;
+      .leadership-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
 
-            grid-template-columns:
-                1.1fr .9fr;
 
-            gap:
-                30px;
+    @media (max-width: 820px) {
 
-            align-items:
-                stretch;
-        }
+      .nav-links {
+        position: absolute;
 
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
 
-        .glass-card {
+        display: none;
 
-            position:
-                relative;
+        flex-direction: column;
 
-            padding:
-                35px;
+        align-items: stretch;
 
-            border:
-                1px solid var(--border);
+        padding: 12px;
 
-            border-radius:
-                25px;
+        border:
+          1px solid
+          var(--border);
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.045),
-                    rgba(255,255,255,0.015)
-                );
+        border-radius: 20px;
 
-            backdrop-filter:
-                blur(18px);
+        background:
+          rgba(5,12,22,0.94);
 
-            -webkit-backdrop-filter:
-                blur(18px);
+        backdrop-filter: blur(20px);
 
-            box-shadow:
-                var(--shadow);
+        box-shadow:
+          0 20px 60px
+          rgba(0,0,0,0.35);
+      }
 
-            overflow:
-                hidden;
+      .nav-links.open {
+        display: flex;
+      }
 
-            transition:
-                var(--transition);
-        }
+      .nav-links a {
+        width: 100%;
+      }
 
+      .menu-toggle {
+        display: grid;
 
-        .glass-card::before {
+        place-items: center;
+      }
 
-            content: "";
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-            position:
-                absolute;
 
-            width:
-                180px;
+    @media (max-width: 650px) {
 
-            height:
-                180px;
+      .container {
+        width:
+          min(100% - 28px, 1180px);
+      }
 
-            top:
-                -100px;
+      .navbar {
+        width:
+          calc(100% - 28px);
+      }
 
-            right:
-                -70px;
+      .hero {
+        padding-top: 130px;
+      }
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(27,147,143,0.13),
-                    transparent 70%
-                );
+      .photo-wrapper {
+        width: 330px;
+        height: 390px;
+      }
 
-            pointer-events:
-                none;
-        }
+      .photo-container,
+      .photo-frame-back,
+      .photo-glow {
+        width: 310px;
+        height: 310px;
+      }
 
+      .photo-dots {
+        right: 3px;
+        bottom: 38px;
+      }
 
-        .glass-card:hover {
+      .hero h1 {
+        font-size: 48px;
 
-            transform:
-                translateY(-7px);
+        letter-spacing: -2.5px;
+      }
 
-            border-color:
-                var(--border-teal);
+      .hero-description {
+        font-size: 14px;
+      }
 
-            box-shadow:
-                0 30px 90px
-                rgba(0,0,0,0.45),
-                0 0 35px
-                rgba(27,147,143,0.06);
-        }
+      section:not(.hero) {
+        padding: 75px 0;
+      }
 
+      .about-main {
+        padding: 28px;
+      }
 
-        .about-main h3 {
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
 
-            font-size:
-                28px;
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
 
-            margin-bottom:
-                20px;
-        }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
 
+      .cv-card {
+        padding: 65px 24px;
+      }
 
-        .about-main h3 span {
+      .cv-watermark {
+        font-size: 75px;
 
-            color:
-                var(--teal-light);
-        }
+        letter-spacing: 5px;
+      }
 
+      .cv-slogan {
+        font-size: 10px;
 
-        .about-main p {
+        letter-spacing: 2.5px;
+      }
 
-            color:
-                var(--text);
+      .footer-inner {
+        flex-direction: column;
 
-            line-height:
-                1.9;
+        text-align: center;
+      }
+    }
 
-            font-size:
-                15px;
 
-            margin-bottom:
-                18px;
-        }
+    @media (max-width: 430px) {
 
+      .photo-wrapper {
+        width: 300px;
+        height: 350px;
+      }
 
-        .about-main p:last-child {
+      .photo-container,
+      .photo-frame-back,
+      .photo-glow {
+        width: 280px;
+        height: 280px;
+      }
 
-            margin-bottom:
-                0;
-        }
+      .hero h1 {
+        font-size: 42px;
+      }
 
+      .logo-text {
+        display: none;
+      }
+    }
 
-        /* ABOUT MINI CARDS */
-
-        .about-side {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap:
-                15px;
-        }
-
-
-        .mini-card {
-
-            padding:
-                25px 20px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                20px;
-
-            background:
-                rgba(8,20,31,0.58);
-
-            backdrop-filter:
-                blur(15px);
-
-            transition:
-                var(--transition);
-        }
-
-
-        .mini-card:hover {
-
-            transform:
-                translateY(-6px);
-
-            border-color:
-                var(--border-teal);
-
-            background:
-                rgba(27,147,143,0.07);
-        }
-
-
-        .mini-icon {
-
-            width:
-                42px;
-
-            height:
-                42px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            border-radius:
-                13px;
-
-            background:
-                rgba(27,147,143,0.10);
-
-            color:
-                var(--teal-light);
-
-            margin-bottom:
-                17px;
-
-            font-size:
-                18px;
-        }
-
-
-        .mini-card h4 {
-
-            font-size:
-                15px;
-
-            margin-bottom:
-                8px;
-        }
-
-
-        .mini-card p {
-
-            color:
-                var(--muted);
-
-            font-size:
-                12px;
-
-            line-height:
-                1.6;
-        }
-
-
-        /* =====================================================
-           EDUCATION
-        ===================================================== */
-
-        .education-grid {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-
-            gap:
-                22px;
-        }
-
-
-        .education-card {
-
-            padding:
-                30px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                22px;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            backdrop-filter:
-                blur(15px);
-
-            transition:
-                var(--transition);
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-        }
-
-
-        .education-card::after {
-
-            content: "";
-
-            position:
-                absolute;
-
-            width:
-                4px;
-
-            height:
-                70px;
-
-            left:
-                0;
-
-            top:
-                30px;
-
-            background:
-                var(--teal);
-
-            border-radius:
-                0 5px 5px 0;
-
-            box-shadow:
-                0 0 20px
-                rgba(27,147,143,0.4);
-        }
-
-
-        .education-card:hover {
-
-            transform:
-                translateY(-7px);
-
-            border-color:
-                var(--border-teal);
-
-            background:
-                rgba(27,147,143,0.045);
-        }
-
-
-        .education-date {
-
-            color:
-                var(--teal-light);
-
-            font-size:
-                11px;
-
-            letter-spacing:
-                2px;
-
-            font-weight:
-                800;
-
-            margin-bottom:
-                12px;
-        }
-
-
-        .education-card h3 {
-
-            font-size:
-                21px;
-
-            margin-bottom:
-                8px;
-        }
-
-
-        .education-card h4 {
-
-            color:
-                var(--text);
-
-            font-size:
-                14px;
-
-            margin-bottom:
-                12px;
-
-            font-weight:
-                600;
-        }
-
-
-        .education-card p {
-
-            color:
-                var(--muted);
-
-            line-height:
-                1.7;
-
-            font-size:
-                13px;
-        }
-
-
-        /* =====================================================
-           LEADERSHIP
-        ===================================================== */
-
-        .leadership-list {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-
-            gap:
-                18px;
-        }
-
-
-        .leadership-card {
-
-            display:
-                flex;
-
-            align-items:
-                flex-start;
-
-            gap:
-                18px;
-
-            padding:
-                25px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                20px;
-
-            background:
-                rgba(255,255,255,0.022);
-
-            backdrop-filter:
-                blur(15px);
-
-            transition:
-                var(--transition);
-        }
-
-
-        .leadership-card:hover {
-
-            transform:
-                translateY(-6px)
-                translateX(2px);
-
-            border-color:
-                var(--border-teal);
-
-            background:
-                rgba(27,147,143,0.055);
-        }
-
-
-        .role-icon {
-
-            min-width:
-                46px;
-
-            height:
-                46px;
-
-            border-radius:
-                14px;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            background:
-                rgba(27,147,143,0.10);
-
-            color:
-                var(--teal-light);
-
-            font-size:
-                18px;
-        }
-
-
-        .leadership-card h3 {
-
-            font-size:
-                15px;
-
-            margin-bottom:
-                6px;
-
-            line-height:
-                1.4;
-        }
-
-
-        .leadership-card .organization {
-
-            color:
-                var(--teal-light);
-
-            font-size:
-                12px;
-
-            font-weight:
-                700;
-
-            margin-bottom:
-                6px;
-        }
-
-
-        .leadership-card p {
-
-            color:
-                var(--muted);
-
-            font-size:
-                11px;
-
-            line-height:
-                1.5;
-        }
-
-
-        /* =====================================================
-           SKILLS
-        ===================================================== */
-
-        .skills-container {
-
-            display:
-                grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap:
-                25px;
-        }
-
-
-        .skills-card {
-
-            padding:
-                32px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                22px;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            backdrop-filter:
-                blur(15px);
-
-            transition:
-                var(--transition);
-        }
-
-
-        .skills-card:hover {
-
-            border-color:
-                var(--border-teal);
-
-            transform:
-                translateY(-6px);
-        }
-
-
-        .skills-card h3 {
-
-            font-size:
-                19px;
-
-            margin-bottom:
-                22px;
-        }
-
-
-        .skills-tags {
-
-            display:
-                flex;
-
-            flex-wrap:
-                wrap;
-
-            gap:
-                10px;
-        }
-
-
-        .skill-tag {
-
-            padding:
-                9px 14px;
-
-            border-radius:
-                30px;
-
-            border:
-                1px solid
-                rgba(27,147,143,0.22);
-
-            background:
-                rgba(27,147,143,0.055);
-
-            color:
-                #b7d8d7;
-
-            font-size:
-                11px;
-
-            transition:
-                .3s ease;
-        }
-
-
-        .skill-tag:hover {
-
-            background:
-                rgba(27,147,143,0.14);
-
-            color:
-                white;
-
-            border-color:
-                var(--teal);
-
-            transform:
-                translateY(-2px);
-        }
-
-
-        /* =====================================================
-           CV CTA
-        ===================================================== */
-
-        .cv-section {
-
-            padding:
-                80px 7%;
-        }
-
-
-        .cv-card {
-
-            max-width:
-                1050px;
-
-            margin:
-                0 auto;
-
-            padding:
-                55px;
-
-            border:
-                1px solid
-                rgba(27,147,143,0.22);
-
-            border-radius:
-                30px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(27,147,143,0.08),
-                    rgba(255,255,255,0.025)
-                );
-
-            backdrop-filter:
-                blur(20px);
-
-            text-align:
-                center;
-
-            position:
-                relative;
-
-            overflow:
-                hidden;
-        }
-
-
-        .cv-card::before {
-
-            content: "";
-
-            position:
-                absolute;
-
-            width:
-                400px;
-
-            height:
-                400px;
-
-            border-radius:
-                50%;
-
-            top:
-                -280px;
-
-            left:
-                50%;
-
-            transform:
-                translateX(-50%);
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(27,147,143,0.16),
-                    transparent 70%
-                );
-        }
-
-
-        .cv-card h2 {
-
-            position:
-                relative;
-
-            font-size:
-                clamp(30px,4vw,45px);
-
-            margin-bottom:
-                14px;
-        }
-
-
-        .cv-card h2 span {
-
-            color:
-                var(--teal-light);
-        }
-
-
-        .cv-card p {
-
-            position:
-                relative;
-
-            max-width:
-                650px;
-
-            margin:
-                0 auto 28px;
-
-            color:
-                var(--muted);
-
-            line-height:
-                1.8;
-
-            font-size:
-                14px;
-        }
-
-
-        /* =====================================================
-           CONTACT CTA
-        ===================================================== */
-
-        .contact-section {
-
-            padding-bottom:
-                80px;
-        }
-
-
-        .contact-card {
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                30px;
-
-            padding:
-                35px 40px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                25px;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            backdrop-filter:
-                blur(18px);
-        }
-
-
-        .contact-card h3 {
-
-            font-size:
-                25px;
-
-            margin-bottom:
-                7px;
-        }
-
-
-        .contact-card p {
-
-            color:
-                var(--muted);
-
-            font-size:
-                13px;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-
-            position:
-                relative;
-
-            padding:
-                70px 7% 25px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,0.06);
-
-            background:
-                rgba(3,8,15,0.80);
-        }
-
-
-        .footer-main {
-
-            max-width:
-                1250px;
-
-            margin:
-                0 auto;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                1.2fr .8fr .8fr;
-
-            gap:
-                50px;
-
-            padding-bottom:
-                50px;
-        }
-
-
-        .footer-brand h3 {
-
-            font-size:
-                23px;
-
-            margin-bottom:
-                10px;
-        }
-
-
-        .footer-brand h3 span {
-
-            color:
-                var(--teal-light);
-        }
-
-
-        .footer-brand p {
-
-            max-width:
-                390px;
-
-            color:
-                var(--muted);
-
-            line-height:
-                1.7;
-
-            font-size:
-                13px;
-        }
-
-
-        .footer-title {
-
-            color:
-                white;
-
-            font-size:
-                12px;
-
-            letter-spacing:
-                2px;
-
-            margin-bottom:
-                18px;
-
-            font-weight:
-                800;
-        }
-
-
-        .footer-links {
-
-            list-style:
-                none;
-
-            display:
-                flex;
-
-            flex-direction:
-                column;
-
-            gap:
-                11px;
-        }
-
-
-        .footer-links a {
-
-            color:
-                var(--muted);
-
-            text-decoration:
-                none;
-
-            font-size:
-                12px;
-
-            transition:
-                .3s ease;
-        }
-
-
-        .footer-links a:hover {
-
-            color:
-                var(--teal-light);
-
-            transform:
-                translateX(4px);
-        }
-
-
-        .social-links {
-
-            display:
-                flex;
-
-            gap:
-                9px;
-
-            flex-wrap:
-                wrap;
-        }
-
-
-        .social-link {
-
-            width:
-                38px;
-
-            height:
-                38px;
-
-            border-radius:
-                50%;
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                center;
-
-            text-decoration:
-                none;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.11);
-
-            color:
-                #cbd4df;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            font-size:
-                12px;
-
-            font-weight:
-                800;
-
-            transition:
-                var(--transition);
-        }
-
-
-        .social-link:hover {
-
-            color:
-                white;
-
-            background:
-                var(--teal);
-
-            border-color:
-                var(--teal);
-
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                0 8px 25px
-                rgba(27,147,143,0.25);
-        }
-
-
-        .footer-bottom {
-
-            max-width:
-                1250px;
-
-            margin:
-                0 auto;
-
-            padding-top:
-                22px;
-
-            border-top:
-                1px solid
-                rgba(255,255,255,0.055);
-
-            display:
-                flex;
-
-            align-items:
-                center;
-
-            justify-content:
-                space-between;
-
-            gap:
-                20px;
-
-            color:
-                #657282;
-
-            font-size:
-                10px;
-
-            letter-spacing:
-                .5px;
-        }
-
-
-        .footer-bottom span {
-
-            color:
-                var(--teal-light);
-        }
-
-
-        /* =====================================================
-           SCROLL REVEAL
-        ===================================================== */
-
-        .reveal {
-
-            opacity:
-                0;
-
-            transform:
-                translateY(35px);
-
-            transition:
-                opacity .8s ease,
-                transform .8s
-                cubic-bezier(.2,.8,.2,1);
-        }
-
-
-        .reveal.active {
-
-            opacity:
-                1;
-
-            transform:
-                translateY(0);
-        }
-
-
-        .delay-1 {
-
-            transition-delay:
-                .1s;
-        }
-
-
-        .delay-2 {
-
-            transition-delay:
-                .2s;
-        }
-
-
-        .delay-3 {
-
-            transition-delay:
-                .3s;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media (max-width: 1100px) {
-
-            .hero {
-
-                gap:
-                    50px;
-            }
-
-
-            .photo-wrapper {
-
-                transform:
-                    scale(.88);
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    60px;
-            }
-
-
-            .nav-links {
-
-                gap:
-                    2px;
-            }
-
-        }
-
-
-        @media (max-width: 900px) {
-
-            nav {
-
-                padding:
-                    0 6%;
-            }
-
-
-            .nav-links {
-
-                display:
-                    none;
-
-                position:
-                    absolute;
-
-                top:
-                    76px;
-
-                left:
-                    5%;
-
-                right:
-                    5%;
-
-                padding:
-                    15px;
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    stretch;
-
-                border:
-                    1px solid var(--border);
-
-                border-radius:
-                    18px;
-
-                background:
-                    rgba(5,12,22,0.95);
-
-                backdrop-filter:
-                    blur(20px);
-
-                box-shadow:
-                    0 20px 50px
-                    rgba(0,0,0,0.35);
-            }
-
-
-            .nav-links.show {
-
-                display:
-                    flex;
-            }
-
-
-            .nav-links a {
-
-                justify-content:
-                    center;
-
-                padding:
-                    13px;
-            }
-
-
-            .menu-btn {
-
-                display:
-                    block;
-            }
-
-
-            .hero {
-
-                min-height:
-                    auto;
-
-                padding-top:
-                    135px;
-
-                flex-direction:
-                    column;
-
-                text-align:
-                    center;
-
-                gap:
-                    35px;
-            }
-
-
-            .photo-wrapper {
-
-                width:
-                    390px;
-
-                height:
-                    430px;
-
-                transform:
-                    scale(.85);
-            }
-
-
-            .hero-content {
-
-                max-width:
-                    700px;
-            }
-
-
-            .hero-description {
-
-                margin-left:
-                    auto;
-
-                margin-right:
-                    auto;
-            }
-
-
-            .hero-buttons {
-
-                justify-content:
-                    center;
-            }
-
-
-            .about-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .education-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .leadership-list {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .skills-container {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .footer-main {
-
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-
-            .footer-brand {
-
-                grid-column:
-                    1 / -1;
-            }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .section {
-
-                padding:
-                    80px 6%;
-            }
-
-
-            .hero {
-
-                padding:
-                    120px 20px 70px;
-            }
-
-
-            .photo-wrapper {
-
-                transform:
-                    scale(.72);
-
-                margin:
-                    -45px 0;
-            }
-
-
-            .hero h1 {
-
-                font-size:
-                    44px;
-
-                letter-spacing:
-                    -2px;
-            }
-
-
-            .hero-description {
-
-                font-size:
-                    14px;
-            }
-
-
-            .about-side {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .glass-card {
-
-                padding:
-                    27px;
-            }
-
-
-            .cv-card {
-
-                padding:
-                    40px 22px;
-            }
-
-
-            .contact-card {
-
-                flex-direction:
-                    column;
-
-                text-align:
-                    center;
-
-                padding:
-                    30px 20px;
-            }
-
-
-            .footer-main {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .footer-brand {
-
-                grid-column:
-                    auto;
-            }
-
-
-            .footer-bottom {
-
-                flex-direction:
-                    column;
-
-                text-align:
-                    center;
-            }
-
-        }
-
-
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-
-                animation-duration:
-                    .01ms !important;
-
-                animation-iteration-count:
-                    1 !important;
-
-                scroll-behavior:
-                    auto !important;
-
-                transition-duration:
-                    .01ms !important;
-            }
-
-        }
-
-    </style>
-
+  </style>
 </head>
-
 
 
 <body>
 
-
-    <!-- =====================================================
-         NAVBAR
-    ===================================================== -->
-
-    <nav id="navbar">
-
-        <a
-            href="#home"
-            class="logo"
-        >
-
-            <div class="logo-mark">
-                P
-            </div>
-
-            <div class="logo-text">
-
-                <div class="logo-main">
-                    PARTHO
-                </div>
-
-                <div class="logo-sub">
-                    PORTFOLIO
-                </div>
-
-            </div>
-
-        </a>
+  <!-- Background -->
+  <div class="bg-grid"></div>
+  <div class="noise"></div>
 
 
-        <ul class="nav-links" id="navLinks">
+  <!-- =======================================================
+       NAVBAR
+  ======================================================== -->
 
-            <li>
-                <a
-                    href="#home"
-                    class="active"
-                >
-                    HOME
-                </a>
-            </li>
+  <header id="header">
 
-            <li>
-                <a href="#about">
-                    ABOUT
-                </a>
-            </li>
+    <nav class="navbar">
 
-            <li>
-                <a href="#education">
-                    EDUCATION
-                </a>
-            </li>
+      <a href="#home" class="logo">
 
-            <li>
-                <a href="#leadership">
-                    LEADERSHIP
-                </a>
-            </li>
+        <div class="logo-mark">
+          P
+        </div>
 
-            <li>
-                <a href="#skills">
-                    SKILLS
-                </a>
-            </li>
+        <div class="logo-text">
+          <strong>PARTHO</strong>
+          <span>PORTFOLIO</span>
+        </div>
 
-            <li>
-                <a
-                    href="#contact"
-                    class="nav-contact"
-                >
-                    CONTACT
-                </a>
-            </li>
-
-        </ul>
+      </a>
 
 
-        <button
-            class="menu-btn"
-            id="menuBtn"
-            aria-label="Open navigation"
-        >
-            ☰
-        </button>
+      <ul class="nav-links" id="navLinks">
+
+        <li>
+          <a href="#home" class="nav-link active">
+            HOME
+          </a>
+        </li>
+
+        <li>
+          <a href="#about" class="nav-link">
+            ABOUT
+          </a>
+        </li>
+
+        <li>
+          <a href="#education" class="nav-link">
+            EDUCATION
+          </a>
+        </li>
+
+        <li>
+          <a href="#leadership" class="nav-link">
+            LEADERSHIP
+          </a>
+        </li>
+
+        <li>
+          <a href="#skills" class="nav-link">
+            SKILLS
+          </a>
+        </li>
+
+        <li>
+          <a href="#contact" class="nav-link">
+            CONTACT
+          </a>
+        </li>
+
+      </ul>
+
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
 
     </nav>
 
+  </header>
+
+
+  <main>
 
 
     <!-- =====================================================
          HERO
-    ===================================================== -->
+    ====================================================== -->
 
-    <section
-        class="hero"
-        id="home"
-    >
+    <section class="hero" id="home">
+
+      <div class="container hero-grid">
 
 
         <!-- PHOTO -->
 
-        <div class="photo-wrapper reveal">
+        <div class="hero-photo">
+
+          <div class="photo-wrapper">
 
             <div class="photo-glow"></div>
 
@@ -2803,75 +1791,84 @@
 
             <div class="photo-container">
 
-                <img
-                    src="partho.png"
-                    alt="M. Biswas Partho"
-                >
+              <img
+                src="partho.png"
+                alt="Partho"
+              >
 
             </div>
+
+
+            <div class="photo-dots">
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+          </div>
 
         </div>
 
 
+        <!-- HERO CONTENT -->
 
-        <!-- HERO TEXT -->
+        <div class="hero-content reveal">
 
-        <div class="hero-content reveal delay-1">
+          <div class="eyebrow">
+            HELLO, I'M
+          </div>
 
-            <div class="hero-small">
-                HELLO, I'M
-            </div>
+          <h1>
+            M. BISWAS
+            <span>PARTHO</span>
+          </h1>
 
+          <p class="hero-description">
 
-            <h1>
+            An undergraduate student of
+            <strong>Special &amp; Inclusive Education</strong>
+            at the Institute of Education and Research,
+            University of Rajshahi, with interests in
+            <strong>educational research, debate, diplomacy,
+            human rights and social equity.</strong>
 
-                MOHAJASHA
-                BISWAS
-
-                <span>
-                    PARTHO
-                </span>
-
-            </h1>
-
-
-            <p class="hero-description">
-
-                Undergraduate student in
-                <span>Special & Inclusive Education</span>
-                at the University of Rajshahi.
-
-                Exploring the intersection of
-                <span>inclusive education, human rights,
-                educational research</span>
-                and community empowerment.
-
-            </p>
+          </p>
 
 
-            <div class="hero-buttons">
+          <div class="hero-buttons">
 
-                <a
-                    href="#about"
-                    class="btn primary-btn"
-                >
-                    Explore My Journey
-                    <span>→</span>
-                </a>
+            <a
+              href="#about"
+              class="btn primary-btn"
+            >
+              Explore My Journey
+              <span>↓</span>
+            </a>
 
+            <a
+              href="cv.pdf"
+              class="btn secondary-btn"
+              download
+            >
+              Download CV
+              <span>↓</span>
+            </a>
 
-                <a
-                    href="cv.pdf"
-                    class="btn secondary-btn"
-                    download
-                >
-                    Download CV
-                    <span>↓</span>
-                </a>
-
-            </div>
+          </div>
 
         </div>
+
+      </div>
 
     </section>
 
@@ -2879,30 +1876,22 @@
 
     <!-- =====================================================
          ABOUT
-    ===================================================== -->
+    ====================================================== -->
 
-    <section
-        class="section about-section"
-        id="about"
-    >
+    <section id="about">
+
+      <div class="container">
 
         <div class="section-heading reveal">
 
-            <div class="section-label">
-                ABOUT ME
-            </div>
+          <div class="section-label">
+            ABOUT ME
+          </div>
 
-            <h2>
-                Ideas,
-                <span>Inclusion</span>
-                & Impact.
-            </h2>
-
-            <p>
-                A journey shaped by education, research,
-                debate, human rights and the pursuit of
-                a more inclusive society.
-            </p>
+          <h2>
+            Ideas, Inclusion
+            <span>&amp; Impact.</span>
+          </h2>
 
         </div>
 
@@ -2910,137 +1899,114 @@
         <div class="about-grid">
 
 
-            <div class="glass-card about-main reveal">
+          <div class="about-main glass reveal">
 
-                <h3>
-                    Who I <span>Am</span>
-                </h3>
+            <h3>
+              Building ideas.
+              Creating impact.
+            </h3>
 
+            <p>
+              I am an undergraduate student of Special Education
+              and Research at the Institute of Education and
+              Research, University of Rajshahi.
+            </p>
 
-                <p>
+            <p>
+              My academic interests revolve around inclusive
+              education, educational research, human rights,
+              social equity and community empowerment.
+            </p>
 
-                    I am currently an undergraduate student
-                    in Special Education and Research at the
-                    Institute of Education and Research,
-                    University of Rajshahi.
+            <p>
+              Beyond academics, I actively engage in debate,
+              diplomacy, Model United Nations, leadership and
+              volunteer activities.
+            </p>
 
-                </p>
-
-
-                <p>
-
-                    My academic journey is driven by a commitment
-                    to inclusive education and creating meaningful
-                    change in the lives of children with diverse needs.
-
-                </p>
-
-
-                <p>
-
-                    My interests intersect human rights,
-                    inclusive education, social equity,
-                    community empowerment, sustainable development
-                    and educational research.
-
-                </p>
+          </div>
 
 
-                <p>
+          <div class="mini-grid">
 
-                    I aspire to pursue higher studies in
-                    special and inclusive education or related
-                    educational fields.
 
-                </p>
+            <div class="mini-card glass reveal">
+
+              <div class="mini-icon">
+                01
+              </div>
+
+              <h4>
+                Inclusive Education
+              </h4>
+
+              <p>
+                Exploring education that creates opportunities
+                for every learner.
+              </p>
+
+            </div>
+
+
+            <div class="mini-card glass reveal">
+
+              <div class="mini-icon">
+                02
+              </div>
+
+              <h4>
+                Research
+              </h4>
+
+              <p>
+                Interested in educational research and
+                evidence-based understanding.
+              </p>
 
             </div>
 
 
+            <div class="mini-card glass reveal">
 
-            <div class="about-side">
+              <div class="mini-icon">
+                03
+              </div>
 
+              <h4>
+                Debate &amp; MUN
+              </h4>
 
-                <div class="mini-card reveal delay-1">
-
-                    <div class="mini-icon">
-                        🎓
-                    </div>
-
-                    <h4>
-                        Inclusive Education
-                    </h4>
-
-                    <p>
-                        Exploring education systems that
-                        create meaningful opportunities for
-                        learners with diverse needs.
-                    </p>
-
-                </div>
-
-
-
-                <div class="mini-card reveal delay-2">
-
-                    <div class="mini-icon">
-                        🔬
-                    </div>
-
-                    <h4>
-                        Research
-                    </h4>
-
-                    <p>
-                        Growing interest in educational
-                        research and evidence-based
-                        educational development.
-                    </p>
-
-                </div>
-
-
-
-                <div class="mini-card reveal delay-1">
-
-                    <div class="mini-icon">
-                        🗣
-                    </div>
-
-                    <h4>
-                        Debate & MUN
-                    </h4>
-
-                    <p>
-                        Interested in debate, diplomacy,
-                        negotiation and international affairs.
-                    </p>
-
-                </div>
-
-
-
-                <div class="mini-card reveal delay-2">
-
-                    <div class="mini-icon">
-                        🤝
-                    </div>
-
-                    <h4>
-                        Human Rights
-                    </h4>
-
-                    <p>
-                        Engaged with human rights,
-                        community empowerment and
-                        social equity.
-                    </p>
-
-                </div>
+              <p>
+                Passionate about argumentation, diplomacy,
+                negotiation and global affairs.
+              </p>
 
             </div>
+
+
+            <div class="mini-card glass reveal">
+
+              <div class="mini-icon">
+                04
+              </div>
+
+              <h4>
+                Human Rights
+              </h4>
+
+              <p>
+                Interested in social equity, rights and
+                community empowerment.
+              </p>
+
+            </div>
+
+
+          </div>
 
         </div>
+
+      </div>
 
     </section>
 
@@ -3048,128 +2014,130 @@
 
     <!-- =====================================================
          EDUCATION
-    ===================================================== -->
+    ====================================================== -->
 
-    <section
-        class="section"
-        id="education"
-    >
+    <section id="education">
+
+      <div class="container">
 
         <div class="section-heading reveal">
 
-            <div class="section-label">
-                EDUCATION
-            </div>
+          <div class="section-label">
+            EDUCATION
+          </div>
 
-            <h2>
-                Academic
-                <span>Journey.</span>
-            </h2>
-
-            <p>
-                My academic background and relevant
-                training experiences.
-            </p>
+          <h2>
+            Academic
+            <span>Journey.</span>
+          </h2>
 
         </div>
 
 
-        <div class="education-grid">
+        <div class="timeline">
 
 
-            <div class="education-card reveal">
+          <div class="timeline-card glass reveal">
 
-                <div class="education-date">
-                    2023 — PRESENT
-                </div>
+            <div class="timeline-dot"></div>
 
-                <h3>
-                    Undergraduate
-                </h3>
+            <div>
 
-                <h4>
-                    University of Rajshahi
-                </h4>
+              <div class="timeline-year">
+                PRESENT
+              </div>
 
-                <p>
-                    Special Education and Research
-                    at the Institute of Education and Research,
-                    University of Rajshahi.
-                </p>
+              <h3>
+                Institute of Education and Research
+              </h3>
 
-            </div>
+              <p>
+                University of Rajshahi
+              </p>
 
-
-
-            <div class="education-card reveal delay-1">
-
-                <div class="education-date">
-                    2025
-                </div>
-
-                <h3>
-                    Basic Mental Health &
-                    Psychological Support
-                </h3>
-
-                <h4>
-                    Human Rights Development Centre
-                </h4>
-
-                <p>
-                    Training on Mental Health and
-                    Psychological Support (MHPSS).
-                </p>
+              <p>
+                Undergraduate — Special Education
+                and Research
+              </p>
 
             </div>
 
+          </div>
 
 
-            <div class="education-card reveal delay-2">
+          <div class="timeline-card glass reveal">
 
-                <div class="education-date">
-                    2020 — 2022
-                </div>
+            <div class="timeline-dot"></div>
 
-                <h3>
-                    Higher Secondary
-                </h3>
+            <div>
 
-                <h4>
-                    Govt. Yasin College
-                </h4>
+              <div class="timeline-year">
+                2020 — 2022
+              </div>
 
-                <p>
-                    Higher Secondary education,
-                    Faridpur, Bangladesh.
-                </p>
+              <h3>
+                Higher Secondary Certificate
+              </h3>
+
+              <p>
+                Govt. Yasin College
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-card glass reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div>
+
+              <div class="timeline-year">
+                2015 — 2020
+              </div>
+
+              <h3>
+                Secondary School Certificate
+              </h3>
+
+              <p>
+                Motijheel Govt. Boys High School
+              </p>
 
             </div>
 
+          </div>
 
 
-            <div class="education-card reveal delay-3">
+          <div class="timeline-card glass reveal">
 
-                <div class="education-date">
-                    2015 — 2020
-                </div>
+            <div class="timeline-dot"></div>
 
-                <h3>
-                    Secondary
-                </h3>
+            <div>
 
-                <h4>
-                    Motijheel Govt. Boys High School
-                </h4>
+              <div class="timeline-year">
+                2025
+              </div>
 
-                <p>
-                    Secondary education,
-                    Dhaka, Bangladesh.
-                </p>
+              <h3>
+                Basic Mental Health &amp;
+                Psychological Support
+              </h3>
+
+              <p>
+                Human Rights Development Centre
+              </p>
 
             </div>
+
+          </div>
+
 
         </div>
+
+      </div>
 
     </section>
 
@@ -3177,197 +2145,139 @@
 
     <!-- =====================================================
          LEADERSHIP
-    ===================================================== -->
+    ====================================================== -->
 
-    <section
-        class="section"
-        id="leadership"
-    >
+    <section id="leadership">
+
+      <div class="container">
 
         <div class="section-heading reveal">
 
-            <div class="section-label">
-                LEADERSHIP & ACTIVITIES
+          <div class="section-label">
+            LEADERSHIP &amp; ACTIVITIES
+          </div>
+
+          <h2>
+            Beyond the
+            <span>Classroom.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="leadership-grid">
+
+
+          <div class="lead-card glass reveal">
+
+            <div class="lead-number">
+              01
             </div>
 
-            <h2>
-                Beyond the
-                <span>Classroom.</span>
-            </h2>
+            <h3>
+              Assistant Debate Secretary
+            </h3>
 
             <p>
-                Experiences through debate, MUN,
-                education, human rights and volunteering.
+              Group of Liberal Debaters, Bangladesh —
+              University of Rajshahi.
             </p>
 
+          </div>
+
+
+          <div class="lead-card glass reveal">
+
+            <div class="lead-number">
+              02
+            </div>
+
+            <h3>
+              Associate Member
+            </h3>
+
+            <p>
+              Rajshahi University Model United Nations
+              Association.
+            </p>
+
+          </div>
+
+
+          <div class="lead-card glass reveal">
+
+            <div class="lead-number">
+              03
+            </div>
+
+            <h3>
+              Member
+            </h3>
+
+            <p>
+              Rajshahi University Education Club.
+            </p>
+
+          </div>
+
+
+          <div class="lead-card glass reveal">
+
+            <div class="lead-number">
+              04
+            </div>
+
+            <h3>
+              Volunteer
+            </h3>
+
+            <p>
+              Human Rights Development Centre,
+              Rajshahi.
+            </p>
+
+          </div>
+
+
+          <div class="lead-card glass reveal">
+
+            <div class="lead-number">
+              05
+            </div>
+
+            <h3>
+              Member
+            </h3>
+
+            <p>
+              Physically-Challenged Development Forum
+              (PDF), Rajshahi University.
+            </p>
+
+          </div>
+
+
+          <div class="lead-card glass reveal">
+
+            <div class="lead-number">
+              06
+            </div>
+
+            <h3>
+              Member
+            </h3>
+
+            <p>
+              Consumer Youth Bangladesh,
+              University of Rajshahi.
+            </p>
+
+          </div>
+
+
         </div>
 
-
-        <div class="leadership-list">
-
-
-            <div class="leadership-card reveal">
-
-                <div class="role-icon">
-                    ◈
-                </div>
-
-                <div>
-
-                    <h3>
-                        Assistant Debate Secretary
-                    </h3>
-
-                    <div class="organization">
-                        Group of Liberal Debaters, Bangladesh
-                    </div>
-
-                    <p>
-                        University of Rajshahi
-                        · 30 Nov 2023 — Present
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="leadership-card reveal delay-1">
-
-                <div class="role-icon">
-                    ◎
-                </div>
-
-                <div>
-
-                    <h3>
-                        Associate Member
-                    </h3>
-
-                    <div class="organization">
-                        Rajshahi University Model
-                        United Nations Association
-                    </div>
-
-                    <p>
-                        University of Rajshahi
-                        · 1 Jul 2026 — Present
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="leadership-card reveal delay-2">
-
-                <div class="role-icon">
-                    +
-                </div>
-
-                <div>
-
-                    <h3>
-                        Member
-                    </h3>
-
-                    <div class="organization">
-                        Rajshahi University Education Club
-                    </div>
-
-                    <p>
-                        1 Mar 2024 — Present
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="leadership-card reveal delay-3">
-
-                <div class="role-icon">
-                    ♡
-                </div>
-
-                <div>
-
-                    <h3>
-                        Volunteer
-                    </h3>
-
-                    <div class="organization">
-                        Human Rights Development Centre
-                    </div>
-
-                    <p>
-                        Rajshahi
-                        · 1 Apr 2025 — Present
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="leadership-card reveal">
-
-                <div class="role-icon">
-                    ◇
-                </div>
-
-                <div>
-
-                    <h3>
-                        Member
-                    </h3>
-
-                    <div class="organization">
-                        Physically-Challenged
-                        Development Forum (PDF)
-                    </div>
-
-                    <p>
-                        Rajshahi University
-                        · 1 Jul 2026 — Present
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="leadership-card reveal delay-1">
-
-                <div class="role-icon">
-                    ◎
-                </div>
-
-                <div>
-
-                    <h3>
-                        Member
-                    </h3>
-
-                    <div class="organization">
-                        Consumer Youth Bangladesh
-                    </div>
-
-                    <p>
-                        University of Rajshahi
-                        · 1 Jul 2026 — Present
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
+      </div>
 
     </section>
 
@@ -3375,662 +2285,578 @@
 
     <!-- =====================================================
          SKILLS
-    ===================================================== -->
+    ====================================================== -->
 
-    <section
-        class="section"
-        id="skills"
-    >
+    <section id="skills">
+
+      <div class="container">
 
         <div class="section-heading reveal">
 
-            <div class="section-label">
-                SKILLS & INTERESTS
-            </div>
+          <div class="section-label">
+            SKILLS &amp; INTERESTS
+          </div>
 
-            <h2>
-                What I
-                <span>Do.</span>
-            </h2>
-
-            <p>
-                Skills and areas that shape my academic,
-                organizational and extracurricular journey.
-            </p>
+          <h2>
+            What I
+            <span>Bring.</span>
+          </h2>
 
         </div>
 
 
-        <div class="skills-container">
+        <div class="skills-grid">
 
 
-            <div class="skills-card reveal">
+          <div class="skill-box glass reveal">
 
-                <h3>
-                    Skills
-                </h3>
+            <h3>
+              Skills
+            </h3>
 
-                <div class="skills-tags">
+            <div class="skill-list">
 
-                    <span class="skill-tag">
-                        Parliamentary Debate
-                    </span>
+              <span class="skill-tag">
+                Parliamentary Debate
+              </span>
 
-                    <span class="skill-tag">
-                        Event Planning
-                    </span>
+              <span class="skill-tag">
+                Event Planning
+              </span>
 
-                    <span class="skill-tag">
-                        Event Management
-                    </span>
+              <span class="skill-tag">
+                Event Management
+              </span>
 
-                    <span class="skill-tag">
-                        Teamwork
-                    </span>
+              <span class="skill-tag">
+                Teamwork
+              </span>
 
-                    <span class="skill-tag">
-                        Communication
-                    </span>
+              <span class="skill-tag">
+                Communication
+              </span>
 
-                    <span class="skill-tag">
-                        Leadership
-                    </span>
+              <span class="skill-tag">
+                Leadership
+              </span>
 
-                    <span class="skill-tag">
-                        Responsibility
-                    </span>
+              <span class="skill-tag">
+                Responsibility
+              </span>
 
-                    <span class="skill-tag">
-                        Coaching Young People
-                    </span>
+              <span class="skill-tag">
+                Coaching Young People
+              </span>
 
-                    <span class="skill-tag">
-                        Good Listener
-                    </span>
-
-                </div>
+              <span class="skill-tag">
+                Good Listener
+              </span>
 
             </div>
 
+          </div>
 
 
-            <div class="skills-card reveal delay-1">
+          <div class="skill-box glass reveal">
 
-                <h3>
-                    Areas of Interest
-                </h3>
+            <h3>
+              Areas of Interest
+            </h3>
 
-                <div class="skills-tags">
+            <div class="skill-list">
 
-                    <span class="skill-tag">
-                        Inclusive Education
-                    </span>
+              <span class="skill-tag">
+                Inclusive Education
+              </span>
 
-                    <span class="skill-tag">
-                        Educational Research
-                    </span>
+              <span class="skill-tag">
+                Educational Research
+              </span>
 
-                    <span class="skill-tag">
-                        Human Rights
-                    </span>
+              <span class="skill-tag">
+                Human Rights
+              </span>
 
-                    <span class="skill-tag">
-                        Social Equity
-                    </span>
+              <span class="skill-tag">
+                Social Equity
+              </span>
 
-                    <span class="skill-tag">
-                        Community Empowerment
-                    </span>
+              <span class="skill-tag">
+                Community Empowerment
+              </span>
 
-                    <span class="skill-tag">
-                        Sustainable Development
-                    </span>
-
-                    <span class="skill-tag">
-                        Debate
-                    </span>
-
-                    <span class="skill-tag">
-                        Diplomacy
-                    </span>
-
-                    <span class="skill-tag">
-                        Negotiation
-                    </span>
-
-                </div>
+              <span class="skill-tag">
+                Sustainable Development
+              </span>
 
             </div>
 
+          </div>
 
 
-            <div class="skills-card reveal">
+          <div class="skill-box glass reveal">
 
-                <h3>
-                    Languages
-                </h3>
+            <h3>
+              Communication
+            </h3>
 
-                <div class="skills-tags">
+            <div class="skill-list">
 
-                    <span class="skill-tag">
-                        Bengali — Native
-                    </span>
+              <span class="skill-tag">
+                Bengali — Native
+              </span>
 
-                    <span class="skill-tag">
-                        English — B2 / C1
-                    </span>
+              <span class="skill-tag">
+                English — B2/C1
+              </span>
 
-                </div>
+              <span class="skill-tag">
+                Debate
+              </span>
+
+              <span class="skill-tag">
+                Diplomacy
+              </span>
+
+              <span class="skill-tag">
+                Negotiation
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="skill-box glass reveal">
+
+            <h3>
+              Hobbies
+            </h3>
+
+            <div class="skill-list">
+
+              <span class="skill-tag">
+                Music
+              </span>
+
+              <span class="skill-tag">
+                Photography
+              </span>
+
+              <span class="skill-tag">
+                Debate
+              </span>
+
+              <span class="skill-tag">
+                MUN
+              </span>
 
             </div>
 
+          </div>
 
-
-            <div class="skills-card reveal delay-1">
-
-                <h3>
-                    Hobbies & Interests
-                </h3>
-
-                <div class="skills-tags">
-
-                    <span class="skill-tag">
-                        Music
-                    </span>
-
-                    <span class="skill-tag">
-                        Photography
-                    </span>
-
-                </div>
-
-            </div>
 
         </div>
+
+      </div>
 
     </section>
 
 
 
     <!-- =====================================================
-         CV
-    ===================================================== -->
+         CLOSING CV BANNER
+    ====================================================== -->
 
     <section class="cv-section">
 
+      <div class="container">
+
         <div class="cv-card reveal">
 
+
+          <!-- HUGE WATERMARK -->
+
+          <div class="cv-watermark">
+            PARTHO
+          </div>
+
+
+          <!-- MAIN CONTENT -->
+
+          <div class="cv-content">
+
+            <div class="cv-slogan">
+              Change for a better world
+            </div>
+
             <h2>
-                Want to know
-                <span>more?</span>
+              Want to know
+              <span>more?</span>
             </h2>
 
             <p>
-                Explore my academic background,
-                leadership experiences, skills and
-                professional journey through my CV.
+              Explore my academic background, leadership
+              experiences, skills and professional journey
+              through my CV.
             </p>
 
-
             <a
-                href="cv.pdf"
-                class="btn primary-btn"
-                download
+              href="cv.pdf"
+              class="btn primary-btn"
+              download
             >
-                Download Full CV
-                <span>↓</span>
+              Download Full CV
+              <span>↓</span>
             </a>
 
+          </div>
+
+
         </div>
+
+      </div>
 
     </section>
 
 
 
     <!-- =====================================================
-         CONTACT CTA
-    ===================================================== -->
+         CONTACT
+    ====================================================== -->
 
-    <section
-        class="section contact-section"
-        id="contact"
-    >
+    <section id="contact">
 
-        <div class="contact-card reveal">
+      <div class="container">
 
-            <div>
+        <div class="section-heading reveal">
 
-                <h3>
-                    Let's connect.
-                </h3>
+          <div class="section-label">
+            CONTACT
+          </div>
 
-                <p>
-                    Interested in education, research,
-                    debate or meaningful conversations?
-                </p>
+          <h2>
+            Let's Connect
+            <span>.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+          <div class="contact-card glass reveal">
+
+            <h3>
+              Have an idea?
+            </h3>
+
+            <p>
+              Let's connect, exchange ideas and create
+              meaningful conversations.
+            </p>
+
+            <div class="contact-links">
+
+              <a
+                href="mailto:yourmail@example.com"
+                class="contact-link"
+              >
+                Email
+              </a>
+
+              <a
+                href="#"
+                class="contact-link"
+              >
+                Facebook
+              </a>
+
+              <a
+                href="#"
+                class="contact-link"
+              >
+                LinkedIn
+              </a>
 
             </div>
 
+          </div>
+
+
+          <div class="contact-card glass reveal">
+
+            <h3>
+              Areas I care about
+            </h3>
+
+            <p>
+              Education • Research • Debate • Diplomacy
+              • Human Rights • Social Equity
+            </p>
 
             <a
-                href="mailto:parthoarsh929@gmail.com"
-                class="btn primary-btn"
+              href="cv.pdf"
+              class="btn secondary-btn"
+              download
             >
-                Contact Me
-                <span>→</span>
+              View My CV
+              <span>↓</span>
             </a>
 
+          </div>
+
+
         </div>
+
+      </div>
 
     </section>
 
 
-
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
-
-    <footer>
-
-        <div class="footer-main">
-
-
-            <!-- BRAND -->
-
-            <div class="footer-brand">
-
-                <h3>
-                    M. Biswas
-                    <span>Partho</span>
-                </h3>
-
-                <p>
-                    Special & Inclusive Education Student,
-                    Research Enthusiast, Debater and MUNner.
-                    Exploring ideas through education,
-                    research, diplomacy and human rights.
-                </p>
-
-            </div>
+  </main>
 
 
 
-            <!-- CONTACT -->
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
 
-            <div>
+  <footer>
 
-                <div class="footer-title">
-                    CONTACT
-                </div>
-
-                <ul class="footer-links">
-
-                    <li>
-                        <a href="mailto:parthoarsh929@gmail.com">
-                            parthoarsh929@gmail.com
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="tel:+8801304627139">
-                            +880 1304627139
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Rajshahi, Bangladesh
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
+    <div class="container footer-inner">
 
 
+      <div class="footer-left">
 
-            <!-- SOCIAL -->
+        © 2026
+        <strong>PARTHO</strong>.
+        All rights reserved.
 
-            <div>
-
-                <div class="footer-title">
-                    CONNECT
-                </div>
-
-
-                <div class="social-links">
-
-                    <!-- Replace # with your actual profile URLs -->
-
-                    <a
-                        href="#"
-                        class="social-link"
-                        aria-label="LinkedIn"
-                        title="LinkedIn"
-                    >
-                        in
-                    </a>
+      </div>
 
 
-                    <a
-                        href="#"
-                        class="social-link"
-                        aria-label="X"
-                        title="X"
-                    >
-                        X
-                    </a>
+      <div class="footer-socials">
+
+        <a
+          href="#"
+          class="social"
+          aria-label="Facebook"
+        >
+          FB
+        </a>
+
+        <a
+          href="#"
+          class="social"
+          aria-label="LinkedIn"
+        >
+          IN
+        </a>
+
+        <a
+          href="mailto:yourmail@example.com"
+          class="social"
+          aria-label="Email"
+        >
+          @
+        </a>
+
+      </div>
 
 
-                    <a
-                        href="#"
-                        class="social-link"
-                        aria-label="Facebook"
-                        title="Facebook"
-                    >
-                        f
-                    </a>
+    </div>
 
-
-                    <a
-                        href="https://wa.me/8801304627139"
-                        class="social-link"
-                        aria-label="WhatsApp"
-                        title="WhatsApp"
-                        target="_blank"
-                    >
-                        ◌
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
+  </footer>
 
 
 
-        <div class="footer-bottom">
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
 
-            <div>
-                © 2026 M. Biswas Partho.
-                All Rights Reserved.
-            </div>
+  <script>
 
-            <div>
-                Designed with
-                <span>purpose</span>
-                & passion.
-            </div>
+    /* =======================================================
+       NAVBAR SCROLL EFFECT
+    ======================================================== */
 
-        </div>
+    const header = document.getElementById("header");
 
-    </footer>
+    window.addEventListener("scroll", () => {
 
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ===================================================== -->
-
-    <script>
-
-        /* =================================================
-           NAVBAR SCROLL EFFECT
-        ================================================= */
-
-        const navbar =
-            document.getElementById("navbar");
+    });
 
 
-        window.addEventListener(
-            "scroll",
-            () => {
 
-                if (window.scrollY > 40) {
+    /* =======================================================
+       MOBILE MENU
+    ======================================================== */
 
-                    navbar.classList.add(
-                        "scrolled"
-                    );
+    const menuToggle =
+      document.getElementById("menuToggle");
 
-                } else {
+    const navLinks =
+      document.getElementById("navLinks");
 
-                    navbar.classList.remove(
-                        "scrolled"
-                    );
-                }
+    menuToggle.addEventListener("click", () => {
+
+      navLinks.classList.toggle("open");
+
+    });
+
+
+    document
+      .querySelectorAll(".nav-link")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          navLinks.classList.remove("open");
+
+        });
+
+      });
+
+
+
+    /* =======================================================
+       SCROLL REVEAL
+    ======================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              revealObserver.unobserve(
+                entry.target
+              );
 
             }
-        );
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(element => {
+
+      revealObserver.observe(element);
+
+    });
 
 
 
-        /* =================================================
-           MOBILE MENU
-        ================================================= */
+    /* =======================================================
+       ACTIVE NAVIGATION
+    ======================================================== */
 
-        const menuBtn =
-            document.getElementById("menuBtn");
+    const sections =
+      document.querySelectorAll("section[id]");
 
-        const navLinks =
-            document.getElementById("navLinks");
+    const navItems =
+      document.querySelectorAll(".nav-link");
 
 
-        menuBtn.addEventListener(
-            "click",
-            () => {
+    const sectionObserver =
+      new IntersectionObserver(
+        entries => {
 
-                navLinks.classList.toggle(
-                    "show"
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              navItems.forEach(link => {
+
+                link.classList.remove("active");
+
+              });
+
+
+              const activeLink =
+                document.querySelector(
+                  `.nav-link[href="#${entry.target.id}"]`
                 );
+
+
+              if (activeLink) {
+                activeLink.classList.add("active");
+              }
 
             }
-        );
 
+          });
 
-        document
-            .querySelectorAll(".nav-links a")
-            .forEach(
-                link => {
+        },
+        {
+          rootMargin: "-35% 0px -55% 0px"
+        }
+      );
 
-                    link.addEventListener(
-                        "click",
-                        () => {
 
-                            navLinks.classList.remove(
-                                "show"
-                            );
+    sections.forEach(section => {
 
-                        }
-                    );
+      sectionObserver.observe(section);
 
-                }
-            );
+    });
 
 
 
-        /* =================================================
-           SCROLL REVEAL
-        ================================================= */
+    /* =======================================================
+       SUBTLE PHOTO PARALLAX
+    ======================================================== */
 
-        const revealElements =
-            document.querySelectorAll(
-                ".reveal"
-            );
+    const photoWrapper =
+      document.querySelector(".photo-wrapper");
 
 
-        const revealObserver =
-            new IntersectionObserver(
-                (entries) => {
+    if (photoWrapper && window.innerWidth > 900) {
 
-                    entries.forEach(
-                        entry => {
+      window.addEventListener("mousemove", event => {
 
-                            if (
-                                entry.isIntersecting
-                            ) {
+        const x =
+          (event.clientX / window.innerWidth - 0.5) * 8;
 
-                                entry.target.classList.add(
-                                    "active"
-                                );
+        const y =
+          (event.clientY / window.innerHeight - 0.5) * 8;
 
-                                revealObserver.unobserve(
-                                    entry.target
-                                );
 
-                            }
+        photoWrapper.style.transform =
+          `translate(${x}px, ${y}px)`;
 
-                        }
-                    );
+      });
 
-                },
-                {
-                    threshold: 0.12
-                }
-            );
 
+      window.addEventListener("mouseleave", () => {
 
-        revealElements.forEach(
-            element => {
+        photoWrapper.style.transform =
+          "translate(0, 0)";
 
-                revealObserver.observe(
-                    element
-                );
+      });
 
-            }
-        );
+    }
 
-
-
-        /* =================================================
-           ACTIVE NAV LINK
-        ================================================= */
-
-        const sections =
-            document.querySelectorAll(
-                "section[id]"
-            );
-
-        const navItems =
-            document.querySelectorAll(
-                ".nav-links a"
-            );
-
-
-        window.addEventListener(
-            "scroll",
-            () => {
-
-                let current =
-                    "home";
-
-
-                sections.forEach(
-                    section => {
-
-                        const sectionTop =
-                            section.offsetTop - 150;
-
-                        const sectionHeight =
-                            section.offsetHeight;
-
-                        if (
-                            window.scrollY >=
-                            sectionTop &&
-                            window.scrollY <
-                            sectionTop +
-                            sectionHeight
-                        ) {
-
-                            current =
-                                section.getAttribute(
-                                    "id"
-                                );
-
-                        }
-
-                    }
-                );
-
-
-                navItems.forEach(
-                    link => {
-
-                        link.classList.remove(
-                            "active"
-                        );
-
-
-                        if (
-                            link.getAttribute("href")
-                            ===
-                            "#" + current
-                        ) {
-
-                            link.classList.add(
-                                "active"
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        /* =================================================
-           PHOTO PARALLAX — VERY SUBTLE
-        ================================================= */
-
-        const photoWrapper =
-            document.querySelector(
-                ".photo-wrapper"
-            );
-
-
-        document.addEventListener(
-            "mousemove",
-            (event) => {
-
-                if (
-                    window.innerWidth <= 900
-                ) return;
-
-
-                const x =
-                    (
-                        event.clientX /
-                        window.innerWidth
-                    ) - 0.5;
-
-
-                const y =
-                    (
-                        event.clientY /
-                        window.innerHeight
-                    ) - 0.5;
-
-
-                photoWrapper.style.setProperty(
-                    "--mouse-x",
-                    `${x * 4}px`
-                );
-
-
-                photoWrapper.style.setProperty(
-                    "--mouse-y",
-                    `${y * 4}px`
-                );
-
-            }
-        );
-
-    </script>
-
+  </script>
 
 </body>
-
 </html>
