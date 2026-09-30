@@ -1741,114 +1741,476 @@
            SKILLS
         ===================================================== */
 
-        .skills-container {
+     /* =====================================================
+   AREA OF INTEREST
+===================================================== */
 
-            display:
-                grid;
+.interest-grid {
 
-            grid-template-columns:
-                1fr 1fr;
+    display:
+        grid;
 
-            gap:
-                25px;
-        }
+    grid-template-columns:
+        1fr 1fr;
 
+    gap:
+        25px;
 
-        .skills-card {
+    max-width:
+        1250px;
 
-            padding:
-                32px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                22px;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            backdrop-filter:
-                blur(15px);
-
-            transition:
-                var(--transition);
-        }
+    margin:
+        0 auto;
+}
 
 
-        .skills-card:hover {
 
-            border-color:
-                var(--border-teal);
+.interest-card {
 
-            transform:
-                translateY(-6px);
-        }
+    position:
+        relative;
 
+    min-height:
+        330px;
 
-        .skills-card h3 {
+    padding:
+        32px;
 
-            font-size:
-                19px;
+    border:
+        1px solid var(--border);
 
-            margin-bottom:
-                22px;
-        }
+    border-radius:
+        22px;
 
+    background:
+        rgba(255,255,255,0.025);
 
-        .skills-tags {
+    backdrop-filter:
+        blur(15px);
 
-            display:
-                flex;
+    overflow:
+        hidden;
 
-            flex-wrap:
-                wrap;
-
-            gap:
-                10px;
-        }
-
-
-        .skill-tag {
-
-            padding:
-                9px 14px;
-
-            border-radius:
-                30px;
-
-            border:
-                1px solid
-                rgba(27,147,143,0.22);
-
-            background:
-                rgba(27,147,143,0.055);
-
-            color:
-                #b7d8d7;
-
-            font-size:
-                11px;
-
-            transition:
-                .3s ease;
-        }
+    transition:
+        var(--transition);
+}
 
 
-        .skill-tag:hover {
 
-            background:
-                rgba(27,147,143,0.14);
+.interest-card::before {
 
-            color:
-                white;
+    content:
+        "";
 
-            border-color:
-                var(--teal);
+    position:
+        absolute;
 
-            transform:
-                translateY(-2px);
-        }
+    width:
+        220px;
+
+    height:
+        220px;
+
+    right:
+        -120px;
+
+    top:
+        -120px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(27,147,143,0.08);
+
+    filter:
+        blur(25px);
+
+    pointer-events:
+        none;
+}
+
+
+
+.interest-card:hover {
+
+    border-color:
+        var(--border-teal);
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,0.20);
+}
+
+
+
+/* NUMBER */
+
+.interest-number {
+
+    position:
+        absolute;
+
+    top:
+        25px;
+
+    right:
+        30px;
+
+    color:
+        rgba(255,255,255,0.16);
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+}
+
+
+
+/* ICON */
+
+.interest-icon {
+
+    width:
+        50px;
+
+    height:
+        50px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-bottom:
+        23px;
+
+    border-radius:
+        15px;
+
+    background:
+        var(--teal);
+
+    color:
+        white;
+
+    font-size:
+        21px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(27,147,143,0.18);
+
+    transition:
+        .35s ease;
+}
+
+
+
+.interest-card:hover .interest-icon {
+
+    transform:
+        translateY(-3px)
+        rotate(-3deg);
+
+    box-shadow:
+        0 10px 30px
+        rgba(27,147,143,0.30);
+}
+
+
+
+/* TITLE */
+
+.interest-card h3 {
+
+    position:
+        relative;
+
+    max-width:
+        500px;
+
+    margin:
+        0 0 14px;
+
+    color:
+        #f5f7fa;
+
+    font-size:
+        20px;
+
+    line-height:
+        1.35;
+
+    font-weight:
+        800;
+}
+
+
+
+/* DESCRIPTION */
+
+.interest-card p {
+
+    position:
+        relative;
+
+    max-width:
+        580px;
+
+    margin:
+        0 0 22px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.75;
+}
+
+
+
+/* TAGS */
+
+.interest-tags {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+}
+
+
+
+.interest-tags span {
+
+    padding:
+        7px 11px;
+
+    border:
+        1px solid
+        rgba(27,147,143,0.22);
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(27,147,143,0.055);
+
+    color:
+        #b7d8d7;
+
+    font-size:
+        10px;
+
+    transition:
+        .3s ease;
+}
+
+
+
+.interest-tags span:hover {
+
+    background:
+        rgba(27,147,143,0.14);
+
+    color:
+        white;
+
+    border-color:
+        var(--teal);
+
+    transform:
+        translateY(-2px);
+}
+
+
+
+/* =====================================================
+   LANGUAGES & HOBBIES
+===================================================== */
+
+.interest-extra {
+
+    max-width:
+        1250px;
+
+    margin:
+        25px auto 0;
+
+    padding:
+        24px 30px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        25px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        18px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    backdrop-filter:
+        blur(15px);
+
+    transition:
+        var(--transition);
+}
+
+
+
+.interest-extra:hover {
+
+    border-color:
+        var(--border-teal);
+
+    transform:
+        translateY(-3px);
+}
+
+
+
+.interest-extra-title {
+
+    color:
+        white;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+    white-space:
+        nowrap;
+}
+
+
+
+.interest-extra-items {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-end;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        9px;
+}
+
+
+
+.interest-pill {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid
+        rgba(27,147,143,0.22);
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(27,147,143,0.055);
+
+    color:
+        #b7d8d7;
+
+    font-size:
+        11px;
+
+    font-weight:
+        600;
+
+    transition:
+        .3s ease;
+}
+
+
+
+.interest-pill small {
+
+    color:
+        var(--teal-light);
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+}
+
+
+
+.interest-pill:hover {
+
+    background:
+        rgba(27,147,143,0.14);
+
+    color:
+        white;
+
+    border-color:
+        var(--teal);
+
+    transform:
+        translateY(-2px);
+}
 
 
         /* =====================================================
@@ -3520,178 +3882,287 @@
          SKILLS
     ===================================================== -->
 
-    <section
-        class="section"
-        id="skills"
-    >
+   <section
+    class="section"
+    id="skills"
+>
 
-        <div class="section-heading reveal">
 
-            <div class="section-label">
-                SKILLS & INTERESTS
+    <!-- SECTION HEADING -->
+
+    <div class="section-heading reveal">
+
+        <div class="section-label">
+            AREA OF INTEREST
+        </div>
+
+        <h2>
+            Area of
+            <span>Interest.</span>
+        </h2>
+
+        <p>
+            The areas of knowledge, engagement and
+            personal interest that shape my journey.
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         AREA OF INTEREST
+    ===================================================== -->
+
+    <div class="interest-grid">
+
+
+        <!-- 01 SPECIAL AND INCLUSIVE EDUCATION -->
+
+        <div class="interest-card reveal">
+
+            <div class="interest-number">
+                01
             </div>
 
-            <h2>
-                What I
-                <span>Do.</span>
-            </h2>
+            <div class="interest-icon">
+                ♿
+            </div>
+
+            <h3>
+                Special and Inclusive Education
+            </h3>
 
             <p>
-                Skills and areas that shape my academic,
-                organizational and extracurricular journey.
+                Exploring inclusive learning, special education,
+                disability inclusion and equitable educational
+                opportunities for diverse learners.
             </p>
 
-        </div>
+            <div class="interest-tags">
 
+                <span>
+                    Special Education
+                </span>
 
-        <div class="skills-container">
+                <span>
+                    Inclusive Education
+                </span>
 
+                <span>
+                    Educational Research
+                </span>
 
-            <div class="skills-card reveal">
-
-                <h3>
-                    Skills
-                </h3>
-
-                <div class="skills-tags">
-
-                    <span class="skill-tag">
-                        Parliamentary Debate
-                    </span>
-
-                    <span class="skill-tag">
-                        Event Planning
-                    </span>
-
-                    <span class="skill-tag">
-                        Event Management
-                    </span>
-
-                    <span class="skill-tag">
-                        Teamwork
-                    </span>
-
-                    <span class="skill-tag">
-                        Communication
-                    </span>
-
-                    <span class="skill-tag">
-                        Leadership
-                    </span>
-
-                    <span class="skill-tag">
-                        Responsibility
-                    </span>
-
-                    <span class="skill-tag">
-                        Coaching Young People
-                    </span>
-
-                    <span class="skill-tag">
-                        Good Listener
-                    </span>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="skills-card reveal delay-1">
-
-                <h3>
-                    Areas of Interest
-                </h3>
-
-                <div class="skills-tags">
-
-                    <span class="skill-tag">
-                        Inclusive Education
-                    </span>
-
-                    <span class="skill-tag">
-                        Educational Research
-                    </span>
-
-                    <span class="skill-tag">
-                        Human Rights
-                    </span>
-
-                    <span class="skill-tag">
-                        Social Equity
-                    </span>
-
-                    <span class="skill-tag">
-                        Community Empowerment
-                    </span>
-
-                    <span class="skill-tag">
-                        Sustainable Development
-                    </span>
-
-                    <span class="skill-tag">
-                        Debate
-                    </span>
-
-                    <span class="skill-tag">
-                        Diplomacy
-                    </span>
-
-                    <span class="skill-tag">
-                        Negotiation
-                    </span>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="skills-card reveal">
-
-                <h3>
-                    Languages
-                </h3>
-
-                <div class="skills-tags">
-
-                    <span class="skill-tag">
-                        Bengali — Native
-                    </span>
-
-                    <span class="skill-tag">
-                        English — B2 / C1
-                    </span>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="skills-card reveal delay-1">
-
-                <h3>
-                    Hobbies & Interests
-                </h3>
-
-                <div class="skills-tags">
-
-                    <span class="skill-tag">
-                        Music
-                    </span>
-
-                    <span class="skill-tag">
-                        Photography
-                    </span>
-
-                </div>
+                <span>
+                    Disability Inclusion
+                </span>
 
             </div>
 
         </div>
 
-    </section>
+
+
+        <!-- 02 HUMAN RIGHTS & WELLBEING -->
+
+        <div class="interest-card reveal delay-1">
+
+            <div class="interest-number">
+                02
+            </div>
+
+            <div class="interest-icon">
+                ♡
+            </div>
+
+            <h3>
+                Human Rights &amp; Wellbeing
+            </h3>
+
+            <p>
+                Engaging with human rights, youth development,
+                wellbeing, social equity and initiatives that
+                promote dignity and inclusion.
+            </p>
+
+            <div class="interest-tags">
+
+                <span>
+                    Human Rights
+                </span>
+
+                <span>
+                    Social Equity
+                </span>
+
+                <span>
+                    Wellbeing
+                </span>
+
+                <span>
+                    Community Empowerment
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 03 DEBATE & LEADERSHIP -->
+
+        <div class="interest-card reveal">
+
+            <div class="interest-number">
+                03
+            </div>
+
+            <div class="interest-icon">
+                ◈
+            </div>
+
+            <h3>
+                Debate &amp; Leadership
+            </h3>
+
+            <p>
+                Developing skills through parliamentary debate,
+                leadership, communication, diplomacy, negotiation
+                and meaningful organizational experiences.
+            </p>
+
+            <div class="interest-tags">
+
+                <span>
+                    Parliamentary Debate
+                </span>
+
+                <span>
+                    Leadership
+                </span>
+
+                <span>
+                    Diplomacy
+                </span>
+
+                <span>
+                    Negotiation
+                </span>
+
+                <span>
+                    Communication
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- 04 CLIMATE RESILIENCE -->
+
+        <div class="interest-card reveal delay-1">
+
+            <div class="interest-number">
+                04
+            </div>
+
+            <div class="interest-icon">
+                ◌
+            </div>
+
+            <h3>
+                Climate Resilience and
+                Sustainability on Earth
+            </h3>
+
+            <p>
+                Exploring environmental sustainability,
+                climate resilience and collective approaches
+                toward protecting communities and our planet.
+            </p>
+
+            <div class="interest-tags">
+
+                <span>
+                    Climate Resilience
+                </span>
+
+                <span>
+                    Sustainability
+                </span>
+
+                <span>
+                    Sustainable Development
+                </span>
+
+                <span>
+                    Environmental Awareness
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         LANGUAGES
+    ===================================================== -->
+
+    <div class="interest-extra reveal">
+
+        <div class="interest-extra-title">
+            LANGUAGES
+        </div>
+
+        <div class="interest-extra-items">
+
+            <span class="interest-pill">
+                Bengali
+                <small>Native</small>
+            </span>
+
+            <span class="interest-pill">
+                English
+                <small>B2 / C1</small>
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HOBBIES & INTERESTS
+    ===================================================== -->
+
+    <div class="interest-extra reveal">
+
+        <div class="interest-extra-title">
+            HOBBIES &amp; INTERESTS
+        </div>
+
+        <div class="interest-extra-items">
+
+            <span class="interest-pill">
+                Music
+            </span>
+
+            <span class="interest-pill">
+                Photography
+            </span>
+
+        </div>
+
+    </div>
+
+
+</section>
 
 
 
