@@ -1983,8 +1983,8 @@
         1.65;
 }
 
-        /* =====================================================
-           EDUCATION
+           /* =====================================================
+           EDUCATION — ACADEMIC CARD SYSTEM
         ===================================================== */
 
         .education-grid {
@@ -2000,52 +2000,115 @@
         }
 
 
+        /* =====================================================
+           EDUCATION CARD
+        ===================================================== */
+
         .education-card {
-
-            padding:
-                30px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius:
-                22px;
-
-            background:
-                rgba(255,255,255,0.025);
-
-            backdrop-filter:
-                blur(15px);
-
-            transition:
-                var(--transition);
 
             position:
                 relative;
 
+            padding:
+                32px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.085);
+
+            border-radius:
+                24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.015)
+                );
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.20);
+
             overflow:
                 hidden;
+
+            transition:
+                .4s cubic-bezier(.2,.8,.2,1);
         }
 
 
-        .education-card::after {
+        /* =====================================================
+           AMBIENT CARD GLOW
+        ===================================================== */
 
-            content: "";
+        .education-card::before {
+
+            content:
+                "";
 
             position:
                 absolute;
 
             width:
-                4px;
+                230px;
 
             height:
-                70px;
+                230px;
+
+            top:
+                -145px;
+
+            right:
+                -100px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(27,147,143,0.15),
+                    transparent 70%
+                );
+
+            filter:
+                blur(8px);
+
+            pointer-events:
+                none;
+
+            transition:
+                .45s ease;
+        }
+
+
+        /* =====================================================
+           LEFT ACCENT LINE
+        ===================================================== */
+
+        .education-card::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                3px;
+
+            height:
+                68px;
 
             left:
                 0;
 
             top:
-                30px;
+                32px;
 
             background:
                 var(--teal);
@@ -2054,10 +2117,17 @@
                 0 5px 5px 0;
 
             box-shadow:
-                0 0 20px
-                rgba(27,147,143,0.4);
+                0 0 18px
+                rgba(27,147,143,0.42);
+
+            transition:
+                .4s ease;
         }
 
+
+        /* =====================================================
+           CARD HOVER
+        ===================================================== */
 
         .education-card:hover {
 
@@ -2065,43 +2135,156 @@
                 translateY(-7px);
 
             border-color:
-                var(--border-teal);
+                rgba(27,147,143,0.38);
 
             background:
-                rgba(27,147,143,0.045);
+                linear-gradient(
+                    145deg,
+                    rgba(27,147,143,0.055),
+                    rgba(255,255,255,0.018)
+                );
+
+            box-shadow:
+                0 28px 70px
+                rgba(0,0,0,0.32),
+
+                0 0 32px
+                rgba(27,147,143,0.055);
         }
 
 
+        .education-card:hover::before {
+
+            transform:
+                scale(1.18);
+
+            opacity:
+                1.1;
+        }
+
+
+        .education-card:hover::after {
+
+            height:
+                92px;
+
+            box-shadow:
+                0 0 24px
+                rgba(27,147,143,0.58);
+        }
+
+
+        /* =====================================================
+           DATE / PERIOD
+        ===================================================== */
+
         .education-date {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            min-height:
+                28px;
+
+            padding:
+                6px 11px;
+
+            margin-bottom:
+                16px;
+
+            border:
+                1px solid
+                rgba(27,147,143,0.20);
+
+            border-radius:
+                20px;
+
+            background:
+                rgba(27,147,143,0.065);
 
             color:
                 var(--teal-light);
 
             font-size:
-                11px;
+                10px;
 
             letter-spacing:
-                2px;
+                1.7px;
 
             font-weight:
                 800;
 
-            margin-bottom:
-                12px;
+            transition:
+                .35s ease;
         }
 
 
+        .education-card:hover .education-date {
+
+            border-color:
+                rgba(27,147,143,0.35);
+
+            background:
+                rgba(27,147,143,0.11);
+
+            box-shadow:
+                0 0 18px
+                rgba(27,147,143,0.08);
+        }
+
+
+        /* =====================================================
+           EDUCATION TITLE
+        ===================================================== */
+
         .education-card h3 {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            margin:
+                0 0 9px;
+
+            color:
+                #f4f7f8;
 
             font-size:
                 21px;
 
-            margin-bottom:
-                8px;
+            line-height:
+                1.35;
+
+            letter-spacing:
+                -.35px;
         }
 
 
+        /* =====================================================
+           INSTITUTION
+        ===================================================== */
+
         .education-card h4 {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            margin:
+                0 0 13px;
 
             color:
                 var(--text);
@@ -2109,24 +2292,47 @@
             font-size:
                 14px;
 
-            margin-bottom:
-                12px;
+            line-height:
+                1.45;
 
             font-weight:
                 600;
+
+            transition:
+                .35s ease;
         }
 
 
+        .education-card:hover h4 {
+
+            color:
+                var(--teal-light);
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
         .education-card p {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            margin:
+                0;
 
             color:
                 var(--muted);
 
-            line-height:
-                1.7;
-
             font-size:
                 13px;
+
+            line-height:
+                1.75;
         }
 
 
