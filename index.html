@@ -2173,7 +2173,73 @@
                 rgba(27,147,143,0.58);
         }
 
+/* =====================================================
+   EXTRA TRAINING BADGE
+===================================================== */
 
+.education-type {
+
+    position:
+        absolute;
+
+    top:
+        18px;
+
+    right:
+        20px;
+
+    padding:
+        5px 9px;
+
+    border:
+        1px solid
+        rgba(27,147,143,0.22);
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(27,147,143,0.055);
+
+    color:
+        rgba(142,239,233,0.72);
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.5px;
+
+    line-height:
+        1;
+
+    z-index:
+        3;
+
+    transition:
+        .35s ease;
+}
+
+
+.education-card:hover .education-type {
+
+    border-color:
+        rgba(27,147,143,0.38);
+
+    background:
+        rgba(27,147,143,0.10);
+
+    color:
+        var(--teal-light);
+
+    box-shadow:
+        0 0 16px
+        rgba(27,147,143,0.10);
+}
+        
         /* =====================================================
            DATE / PERIOD
         ===================================================== */
@@ -4340,11 +4406,15 @@
 
 
 
-            <div class="education-card reveal delay-1">
+         <div class="education-card reveal delay-1">
 
-                <div class="education-date">
-                    2025
-                </div>
+    <div class="education-type">
+        TRAINING
+    </div>
+
+    <div class="education-date">
+        2025
+    </div>
 
                 <h3>
                     Basic Mental Health &
