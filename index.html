@@ -1934,7 +1934,54 @@
                 );
         }
 
+        .cv-watermark {
 
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size:
+        clamp(100px, 18vw, 240px);
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        12px;
+
+    color:
+        rgba(255,255,255,0.035);
+
+    white-space:
+        nowrap;
+
+    pointer-events:
+        none;
+
+    user-select:
+        none;
+
+    z-index:
+        0;
+}
+
+.cv-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+}
+        
         .cv-card h2 {
 
             position:
