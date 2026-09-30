@@ -2701,33 +2701,54 @@
            ORGANIZATION
         ===================================================== */
 
-        .leadership-card .organization {
+.leadership-card .organization {
 
-            position:
-                relative;
+    position:
+        relative;
 
-            z-index:
-                2;
+    z-index:
+        2;
 
-            margin:
-                0 0 7px;
+    margin:
+        0 0 7px;
 
-            color:
-                var(--teal-light);
+    color:
+        #f1f5f5;
 
-            font-size:
-                12px;
+    font-size:
+        12px;
 
-            line-height:
-                1.5;
+    line-height:
+        1.5;
 
-            font-weight:
-                700;
+    font-weight:
+        700;
 
-            transition:
-                .35s ease;
-        }
+    transition:
+        .35s ease;
+}
 
+
+/* ORGANIZATION — NEON HOVER */
+
+.leadership-card:hover .organization {
+
+    color:
+        var(--teal-light);
+
+    text-shadow:
+        0 0 5px
+        rgba(27,147,143,0.75),
+
+        0 0 12px
+        rgba(27,147,143,0.55),
+
+        0 0 24px
+        rgba(27,147,143,0.30),
+
+        0 0 40px
+        rgba(27,147,143,0.16);
+}
 
         .leadership-card:hover .organization {
 
