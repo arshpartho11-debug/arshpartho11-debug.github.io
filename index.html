@@ -989,10 +989,115 @@
    HERO CONTENT — POLISHED
 ===================================================== */
 
+/* =====================================================
+   HERO — PREMIUM COMPOSITION
+===================================================== */
+
+.hero {
+
+    min-height: 100vh;
+
+    padding:
+        125px 7% 85px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap:
+        clamp(55px, 7vw, 105px);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* MAIN ATMOSPHERIC GLOW */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 620px;
+    height: 620px;
+
+    left: 19%;
+    top: 3%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(27,147,143,0.16),
+            transparent 68%
+        );
+
+    filter:
+        blur(35px);
+
+    animation:
+        heroGlow 7s ease-in-out infinite;
+
+    pointer-events:
+        none;
+}
+
+
+/* SECONDARY GLOW */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -120px;
+    bottom: -150px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(27,147,143,0.08),
+            transparent 70%
+        );
+
+    filter:
+        blur(30px);
+
+    pointer-events:
+        none;
+}
+
+
+@keyframes heroGlow {
+
+    0%, 100% {
+        transform: scale(1);
+        opacity: .65;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
 .hero-content {
 
     max-width:
-        680px;
+        650px;
 
     position:
         relative;
@@ -1001,9 +1106,11 @@
         5;
 
     padding-top:
-        8px;
+        5px;
 }
 
+
+/* HELLO I'M */
 
 .hero-small {
 
@@ -1014,10 +1121,10 @@
         center;
 
     gap:
-        9px;
+        10px;
 
     margin-bottom:
-        18px;
+        19px;
 
     color:
         var(--teal-light);
@@ -1042,7 +1149,7 @@
         "";
 
     width:
-        28px;
+        34px;
 
     height:
         1px;
@@ -1051,30 +1158,35 @@
         var(--teal);
 
     box-shadow:
-        0 0 10px
-        rgba(27,147,143,0.55);
+        0 0 12px
+        rgba(27,147,143,0.7);
 }
 
+
+/* NAME */
 
 .hero h1 {
 
     font-size:
-        clamp(52px, 6vw, 78px);
+        clamp(54px, 6vw, 82px);
 
     line-height:
-        0.98;
+        .94;
 
     letter-spacing:
-        -3.5px;
+        -4px;
 
     margin-bottom:
-        28px;
+        30px;
 
     font-weight:
         900;
 
     text-transform:
         uppercase;
+
+    position:
+        relative;
 }
 
 
@@ -1084,27 +1196,29 @@
         block;
 
     margin-top:
-        4px;
+        8px;
 
     color:
         var(--teal);
 
     text-shadow:
         0 0 18px
-        rgba(27,147,143,0.16),
+        rgba(27,147,143,0.18),
 
-        0 0 40px
+        0 0 42px
         rgba(27,147,143,0.08);
 }
 
 
+/* DESCRIPTION */
+
 .hero-description {
 
     max-width:
-        610px;
+        600px;
 
     margin-bottom:
-        34px;
+        35px;
 
     color:
         var(--text);
@@ -1116,7 +1230,7 @@
         1.9;
 
     letter-spacing:
-        .1px;
+        .15px;
 }
 
 
@@ -1135,7 +1249,7 @@
 
 
 /* =====================================================
-   HERO BUTTONS
+   BUTTONS
 ===================================================== */
 
 .hero-buttons {
@@ -1147,7 +1261,7 @@
         center;
 
     gap:
-        12px;
+        13px;
 
     flex-wrap:
         wrap;
@@ -1169,10 +1283,10 @@
         10px;
 
     min-height:
-        48px;
+        49px;
 
     padding:
-        13px 22px;
+        13px 23px;
 
     border-radius:
         30px;
@@ -1194,7 +1308,7 @@
 }
 
 
-/* PRIMARY BUTTON */
+/* PRIMARY */
 
 .primary-btn {
 
@@ -1209,8 +1323,8 @@
         );
 
     box-shadow:
-        0 10px 28px
-        rgba(27,147,143,0.20);
+        0 10px 30px
+        rgba(27,147,143,0.22);
 }
 
 
@@ -1230,19 +1344,19 @@
         translateY(-4px);
 
     box-shadow:
-        0 15px 38px
-        rgba(27,147,143,0.30);
+        0 16px 40px
+        rgba(27,147,143,0.32);
 }
 
 
 .primary-btn:hover span {
 
     transform:
-        translateX(4px);
+        translateX(5px);
 }
 
 
-/* SECONDARY BUTTON */
+/* SECONDARY */
 
 .secondary-btn {
 
@@ -1290,8 +1404,8 @@
         rgba(27,147,143,0.08);
 
     box-shadow:
-        0 10px 30px
-        rgba(27,147,143,0.13);
+        0 12px 32px
+        rgba(27,147,143,0.14);
 }
 
 
