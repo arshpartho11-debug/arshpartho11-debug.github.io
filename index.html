@@ -981,478 +981,999 @@
         }
 
 
-        /* =====================================================
-           HERO CONTENT
-        ===================================================== */
+/* =====================================================
+   HERO — PREMIUM COMPOSITION
+===================================================== */
 
-        .hero-content {
+.hero {
 
-            max-width: 650px;
+    min-height: 100vh;
 
-            position: relative;
+    padding:
+        125px 7% 85px;
 
-            z-index: 5;
-        }
+    display: flex;
 
+    align-items: center;
 
-        .hero-small {
+    justify-content: center;
 
-            color:
-                var(--teal-light);
+    gap:
+        clamp(55px, 7vw, 105px);
 
-            font-size: 13px;
+    position: relative;
 
-            letter-spacing: 4px;
+    overflow: hidden;
+}
 
-            margin-bottom: 15px;
 
-            font-weight: 800;
-        }
+/* MAIN ATMOSPHERIC GLOW */
 
+.hero::before {
 
-        .hero h1 {
+    content: "";
 
-            font-size:
-                clamp(52px, 6vw, 78px);
+    position: absolute;
 
-            line-height:
-                1.01;
+    width: 620px;
+    height: 620px;
 
-            letter-spacing:
-                -3px;
+    left: 19%;
+    top: 3%;
 
-            margin-bottom:
-                28px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(27,147,143,0.16),
+            transparent 68%
+        );
 
-            font-weight:
-                900;
+    filter:
+        blur(35px);
 
-            text-transform:
-                uppercase;
-        }
+    animation:
+        heroGlow 7s ease-in-out infinite;
 
+    pointer-events:
+        none;
+}
 
-        .hero h1 span {
 
-            display: block;
+/* SECONDARY GLOW */
 
-            color:
-                var(--teal);
+.hero::after {
 
-            text-shadow:
-                0 0 30px
-                rgba(27,147,143,0.18);
-        }
+    content: "";
 
+    position: absolute;
 
-        .hero-description {
+    width: 420px;
+    height: 420px;
 
-            color:
-                var(--text);
+    right: -120px;
+    bottom: -150px;
 
-            font-size:
-                17px;
+    background:
+        radial-gradient(
+            circle,
+            rgba(27,147,143,0.08),
+            transparent 70%
+        );
 
-            line-height:
-                1.85;
+    filter:
+        blur(30px);
 
-            max-width:
-                620px;
+    pointer-events:
+        none;
+}
 
-            margin-bottom:
-                32px;
-        }
 
+@keyframes heroGlow {
 
-        .hero-description span {
+    0%, 100% {
+        transform: scale(1);
+        opacity: .65;
+    }
 
-            color:
-                var(--teal-light);
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
 
-            font-weight:
-                600;
-        }
 
+/* =====================================================
+   HERO CONTENT
+===================================================== */
 
-        /* HERO BUTTONS */
+.hero-content {
 
-        .hero-buttons {
+    max-width:
+        650px;
 
-            display:
-                flex;
+    position:
+        relative;
 
-            gap:
-                13px;
+    z-index:
+        5;
 
-            flex-wrap:
-                wrap;
-        }
+    padding-top:
+        5px;
+}
 
 
-        .btn {
+/* HELLO I'M */
 
-            display:
-                inline-flex;
+.hero-small {
 
-            align-items:
-                center;
+    display:
+        inline-flex;
 
-            justify-content:
-                center;
+    align-items:
+        center;
 
-            gap:
-                9px;
+    gap:
+        10px;
 
-            padding:
-                14px 25px;
+    margin-bottom:
+        19px;
 
-            border-radius:
-                30px;
+    color:
+        var(--teal-light);
 
-            text-decoration:
-                none;
+    font-size:
+        12px;
 
-            font-size:
-                13px;
+    letter-spacing:
+        4px;
 
-            font-weight:
-                800;
+    font-weight:
+        800;
 
-            letter-spacing:
-                .4px;
+    text-transform:
+        uppercase;
+}
 
-            transition:
-                var(--transition);
-        }
 
+.hero-small::before {
 
-        .primary-btn {
+    content:
+        "";
 
-            background:
-                var(--teal);
+    width:
+        34px;
 
-            color:
-                white;
+    height:
+        1px;
 
-            box-shadow:
-                0 10px 30px
-                rgba(27,147,143,0.22);
-        }
+    background:
+        var(--teal);
 
+    box-shadow:
+        0 0 12px
+        rgba(27,147,143,0.7);
+}
 
-        .primary-btn:hover {
 
-            transform:
-                translateY(-4px);
+/* NAME */
 
-            background:
-                var(--teal-light);
+.hero h1 {
 
-            box-shadow:
-                0 15px 40px
-                rgba(27,147,143,0.32);
-        }
+    font-size:
+        clamp(54px, 6vw, 82px);
 
+    line-height:
+        .94;
 
-        .secondary-btn {
+    letter-spacing:
+        -4px;
 
-            color:
-                white;
+    margin-bottom:
+        30px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.12);
+    font-weight:
+        900;
 
-            background:
-                rgba(255,255,255,0.035);
+    text-transform:
+        uppercase;
 
-            backdrop-filter:
-                blur(12px);
-        }
+    position:
+        relative;
+}
 
 
-        .secondary-btn:hover {
+.hero h1 span {
 
-            transform:
-                translateY(-4px);
+    display:
+        block;
 
-            border-color:
-                var(--teal);
+    margin-top:
+        8px;
 
-            color:
-                var(--teal-light);
+    color:
+        var(--teal);
 
-            background:
-                rgba(27,147,143,0.07);
+    text-shadow:
+        0 0 18px
+        rgba(27,147,143,0.18),
 
-            box-shadow:
-                0 10px 30px
-                rgba(27,147,143,0.12);
-        }
+        0 0 42px
+        rgba(27,147,143,0.08);
+}
 
 
-        /* =====================================================
-           ABOUT
-        ===================================================== */
+/* DESCRIPTION */
 
-        .about-section {
+.hero-description {
 
-            background:
-                linear-gradient(
-                    180deg,
-                    transparent,
-                    rgba(27,147,143,0.025),
-                    transparent
-                );
-        }
+    max-width:
+        600px;
 
+    margin-bottom:
+        35px;
 
-        .about-grid {
+    color:
+        var(--text);
 
-            display:
-                grid;
+    font-size:
+        16px;
 
-            grid-template-columns:
-                1.1fr .9fr;
+    line-height:
+        1.9;
 
-            gap:
-                30px;
+    letter-spacing:
+        .15px;
+}
 
-            align-items:
-                stretch;
-        }
 
+.hero-description span {
 
-        .glass-card {
+    color:
+        var(--teal-light);
 
-            position:
-                relative;
+    font-weight:
+        650;
 
-            padding:
-                35px;
+    text-shadow:
+        0 0 12px
+        rgba(27,147,143,0.08);
+}
 
-            border:
-                1px solid var(--border);
 
-            border-radius:
-                25px;
+/* =====================================================
+   BUTTONS
+===================================================== */
 
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.045),
-                    rgba(255,255,255,0.015)
-                );
+.hero-buttons {
 
-            backdrop-filter:
-                blur(18px);
+    display:
+        flex;
 
-            -webkit-backdrop-filter:
-                blur(18px);
+    align-items:
+        center;
 
-            box-shadow:
-                var(--shadow);
+    gap:
+        13px;
 
-            overflow:
-                hidden;
+    flex-wrap:
+        wrap;
+}
 
-            transition:
-                var(--transition);
-        }
 
+.btn {
 
-        .glass-card::before {
+    display:
+        inline-flex;
 
-            content: "";
+    align-items:
+        center;
 
-            position:
-                absolute;
+    justify-content:
+        center;
 
-            width:
-                180px;
+    gap:
+        10px;
 
-            height:
-                180px;
+    min-height:
+        49px;
 
-            top:
-                -100px;
+    padding:
+        13px 23px;
 
-            right:
-                -70px;
+    border-radius:
+        30px;
 
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(27,147,143,0.13),
-                    transparent 70%
-                );
+    text-decoration:
+        none;
 
-            pointer-events:
-                none;
-        }
+    font-size:
+        12px;
 
+    font-weight:
+        800;
 
-        .glass-card:hover {
+    letter-spacing:
+        .5px;
 
-            transform:
-                translateY(-7px);
+    transition:
+        .35s cubic-bezier(.2,.8,.2,1);
+}
 
-            border-color:
-                var(--border-teal);
 
-            box-shadow:
-                0 30px 90px
-                rgba(0,0,0,0.45),
-                0 0 35px
-                rgba(27,147,143,0.06);
-        }
+/* PRIMARY */
 
+.primary-btn {
 
-        .about-main h3 {
+    color:
+        white;
 
-            font-size:
-                28px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--teal),
+            var(--teal-light)
+        );
 
-            margin-bottom:
-                20px;
-        }
+    box-shadow:
+        0 10px 30px
+        rgba(27,147,143,0.22);
+}
 
 
-        .about-main h3 span {
+.primary-btn span {
 
-            color:
-                var(--teal-light);
-        }
+    display:
+        inline-flex;
 
+    transition:
+        .3s ease;
+}
 
-        .about-main p {
 
-            color:
-                var(--text);
+.primary-btn:hover {
 
-            line-height:
-                1.9;
+    transform:
+        translateY(-4px);
 
-            font-size:
-                15px;
+    box-shadow:
+        0 16px 40px
+        rgba(27,147,143,0.32);
+}
 
-            margin-bottom:
-                18px;
-        }
 
+.primary-btn:hover span {
 
-        .about-main p:last-child {
+    transform:
+        translateX(5px);
+}
 
-            margin-bottom:
-                0;
-        }
 
+/* SECONDARY */
 
-        /* ABOUT MINI CARDS */
+.secondary-btn {
 
-        .about-side {
+    color:
+        #e8eeee;
 
-            display:
-                grid;
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
 
-            grid-template-columns:
-                1fr 1fr;
+    background:
+        rgba(255,255,255,0.035);
 
-            gap:
-                15px;
-        }
+    backdrop-filter:
+        blur(14px);
 
+    box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.04);
+}
 
-        .mini-card {
 
-            padding:
-                25px 20px;
+.secondary-btn span {
 
-            border:
-                1px solid var(--border);
+    display:
+        inline-flex;
 
-            border-radius:
-                20px;
+    transition:
+        .3s ease;
+}
 
-            background:
-                rgba(8,20,31,0.58);
 
-            backdrop-filter:
-                blur(15px);
+.secondary-btn:hover {
 
-            transition:
-                var(--transition);
-        }
+    transform:
+        translateY(-4px);
 
+    border-color:
+        rgba(27,147,143,0.65);
 
-        .mini-card:hover {
+    color:
+        white;
 
-            transform:
-                translateY(-6px);
+    background:
+        rgba(27,147,143,0.08);
 
-            border-color:
-                var(--border-teal);
+    box-shadow:
+        0 12px 32px
+        rgba(27,147,143,0.14);
+}
 
-            background:
-                rgba(27,147,143,0.07);
-        }
 
+.secondary-btn:hover span {
 
-        .mini-icon {
+    transform:
+        translateY(3px);
+}
 
-            width:
-                42px;
 
-            height:
-                42px;
+/* =====================================================
+   ABOUT — SHARED CARD SYSTEM
+===================================================== */
 
-            display:
-                flex;
+#about {
 
-            align-items:
-                center;
+    scroll-margin-top:
+        100px;
+}
 
-            justify-content:
-                center;
 
-            border-radius:
-                13px;
+/* ABOUT SECTION */
 
-            background:
-                rgba(27,147,143,0.10);
+.about-section {
 
-            color:
-                var(--teal-light);
+    position:
+        relative;
 
-            margin-bottom:
-                17px;
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(27,147,143,0.025),
+            transparent
+        );
 
-            font-size:
-                18px;
-        }
+    overflow:
+        hidden;
+}
 
 
-        .mini-card h4 {
+/* AMBIENT BACKGROUND */
 
-            font-size:
-                15px;
+.about-section::before {
 
-            margin-bottom:
-                8px;
-        }
+    content:
+        "";
 
+    position:
+        absolute;
 
-        .mini-card p {
+    width:
+        520px;
 
-            color:
-                var(--muted);
+    height:
+        520px;
 
-            font-size:
-                12px;
+    left:
+        -260px;
 
-            line-height:
-                1.6;
-        }
+    top:
+        160px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(27,147,143,0.065),
+            transparent 70%
+        );
+
+    filter:
+        blur(35px);
+
+    pointer-events:
+        none;
+}
+
+
+/* =====================================================
+   ABOUT GRID
+===================================================== */
+
+.about-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.1fr .9fr;
+
+    gap:
+        24px;
+
+    align-items:
+        stretch;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+}
+
+
+/* =====================================================
+   MAIN ABOUT CARD
+===================================================== */
+
+.glass-card {
+
+    position:
+        relative;
+
+    padding:
+        38px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.085);
+
+    border-radius:
+        26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.015)
+        );
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.22);
+
+    overflow:
+        hidden;
+
+    transition:
+        .4s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* AMBIENT CARD GLOW */
+
+.glass-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        280px;
+
+    height:
+        280px;
+
+    top:
+        -170px;
+
+    right:
+        -120px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(27,147,143,0.16),
+            transparent 70%
+        );
+
+    filter:
+        blur(8px);
+
+    pointer-events:
+        none;
+
+    transition:
+        .45s ease;
+}
+
+
+/* LEFT ACCENT */
+
+.glass-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        38px;
+
+    width:
+        3px;
+
+    height:
+        70px;
+
+    border-radius:
+        0 5px 5px 0;
+
+    background:
+        var(--teal);
+
+    box-shadow:
+        0 0 18px
+        rgba(27,147,143,0.42);
+
+    transition:
+        .4s ease;
+}
+
+
+/* MAIN CARD HOVER */
+
+.glass-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(27,147,143,0.34);
+
+    box-shadow:
+        0 28px 75px
+        rgba(0,0,0,0.34),
+
+        0 0 32px
+        rgba(27,147,143,0.055);
+}
+
+
+.glass-card:hover::before {
+
+    transform:
+        scale(1.12);
+
+    opacity:
+        1.1;
+}
+
+
+.glass-card:hover::after {
+
+    height:
+        95px;
+
+    box-shadow:
+        0 0 24px
+        rgba(27,147,143,0.58);
+}
+
+
+/* =====================================================
+   MAIN CONTENT HIERARCHY
+===================================================== */
+
+.about-main h3 {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin:
+        0 0 24px;
+
+    font-size:
+        29px;
+
+    line-height:
+        1.2;
+
+    letter-spacing:
+        -.7px;
+}
+
+
+.about-main h3 span {
+
+    color:
+        var(--teal-light);
+
+    text-shadow:
+        0 0 15px
+        rgba(27,147,143,0.10);
+}
+
+
+.about-main p {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        720px;
+
+    margin:
+        0 0 17px;
+
+    color:
+        var(--text);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.9;
+}
+
+
+.about-main p:last-child {
+
+    margin-bottom:
+        0;
+}
+
+
+/* =====================================================
+   MINI CARD GRID
+===================================================== */
+
+.about-side {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        15px;
+}
+
+
+/* =====================================================
+   MINI CARDS
+===================================================== */
+
+.mini-card {
+
+    position:
+        relative;
+
+    min-height:
+        185px;
+
+    padding:
+        24px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.075);
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(8,20,31,0.55);
+
+    backdrop-filter:
+        blur(17px);
+
+    -webkit-backdrop-filter:
+        blur(17px);
+
+    overflow:
+        hidden;
+
+    transition:
+        .4s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* MINI CARD AMBIENT GLOW */
+
+.mini-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        170px;
+
+    height:
+        170px;
+
+    top:
+        -105px;
+
+    right:
+        -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(27,147,143,0.14),
+            transparent 70%
+        );
+
+    filter:
+        blur(8px);
+
+    pointer-events:
+        none;
+
+    transition:
+        .4s ease;
+}
+
+
+/* MINI CARD HOVER */
+
+.mini-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(27,147,143,0.36);
+
+    background:
+        rgba(27,147,143,0.055);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,0.25),
+
+        0 0 25px
+        rgba(27,147,143,0.045);
+}
+
+
+.mini-card:hover::before {
+
+    transform:
+        scale(1.2);
+
+    opacity:
+        1.1;
+}
+
+
+/* =====================================================
+   MINI ICON
+===================================================== */
+
+.mini-icon {
+
+    width:
+        43px;
+
+    height:
+        43px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-bottom:
+        16px;
+
+    border:
+        1px solid
+        rgba(27,147,143,0.18);
+
+    border-radius:
+        13px;
+
+    background:
+        rgba(27,147,143,0.09);
+
+    color:
+        var(--teal-light);
+
+    font-size:
+        18px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    transition:
+        .35s ease;
+}
+
+
+.mini-card:hover .mini-icon {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(27,147,143,0.15);
+
+    border-color:
+        rgba(27,147,143,0.32);
+
+    box-shadow:
+        0 8px 22px
+        rgba(27,147,143,0.14);
+}
+
+
+/* =====================================================
+   MINI CARD TYPOGRAPHY
+===================================================== */
+
+.mini-card h4 {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin:
+        0 0 8px;
+
+    color:
+        #f4f7f8;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.35;
+}
+
+
+.mini-card p {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin:
+        0;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.65;
+}
 
 
         /* =====================================================
