@@ -2402,8 +2402,8 @@
         }
 
 
-        /* =====================================================
-           LEADERSHIP
+               /* =====================================================
+           LEADERSHIP — EXPERIENCE CARD SYSTEM
         ===================================================== */
 
         .leadership-list {
@@ -2419,7 +2419,14 @@
         }
 
 
+        /* =====================================================
+           LEADERSHIP CARD
+        ===================================================== */
+
         .leadership-card {
+
+            position:
+                relative;
 
             display:
                 flex;
@@ -2434,35 +2441,170 @@
                 25px;
 
             border:
-                1px solid var(--border);
+                1px solid
+                rgba(255,255,255,0.08);
 
             border-radius:
-                20px;
+                21px;
 
             background:
-                rgba(255,255,255,0.022);
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.015)
+                );
 
             backdrop-filter:
-                blur(15px);
+                blur(17px);
+
+            -webkit-backdrop-filter:
+                blur(17px);
+
+            box-shadow:
+                0 18px 50px
+                rgba(0,0,0,0.18);
+
+            overflow:
+                hidden;
 
             transition:
-                var(--transition);
+                .4s cubic-bezier(.2,.8,.2,1);
         }
 
+
+        /* =====================================================
+           AMBIENT CARD GLOW
+        ===================================================== */
+
+        .leadership-card::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                190px;
+
+            height:
+                190px;
+
+            top:
+                -120px;
+
+            right:
+                -90px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(27,147,143,0.14),
+                    transparent 70%
+                );
+
+            filter:
+                blur(8px);
+
+            pointer-events:
+                none;
+
+            transition:
+                .45s ease;
+        }
+
+
+        /* =====================================================
+           LEFT ACCENT
+        ===================================================== */
+
+        .leadership-card::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            top:
+                25px;
+
+            width:
+                3px;
+
+            height:
+                55px;
+
+            background:
+                var(--teal);
+
+            border-radius:
+                0 5px 5px 0;
+
+            box-shadow:
+                0 0 17px
+                rgba(27,147,143,0.40);
+
+            transition:
+                .4s ease;
+        }
+
+
+        /* =====================================================
+           HOVER
+        ===================================================== */
 
         .leadership-card:hover {
 
             transform:
-                translateY(-6px)
-                translateX(2px);
+                translateY(-7px);
 
             border-color:
-                var(--border-teal);
+                rgba(27,147,143,0.38);
 
             background:
-                rgba(27,147,143,0.055);
+                linear-gradient(
+                    145deg,
+                    rgba(27,147,143,0.055),
+                    rgba(255,255,255,0.018)
+                );
+
+            box-shadow:
+                0 25px 65px
+                rgba(0,0,0,0.30),
+
+                0 0 30px
+                rgba(27,147,143,0.05);
         }
 
+
+        .leadership-card:hover::before {
+
+            transform:
+                scale(1.2);
+
+            opacity:
+                1.1;
+        }
+
+
+        .leadership-card:hover::after {
+
+            height:
+                75px;
+
+            box-shadow:
+                0 0 23px
+                rgba(27,147,143,0.55);
+        }
+
+
+        /* =====================================================
+           ROLE ICON
+        ===================================================== */
 
         .role-icon {
 
@@ -2471,6 +2613,10 @@
 
             height:
                 46px;
+
+            border:
+                1px solid
+                rgba(27,147,143,0.18);
 
             border-radius:
                 14px;
@@ -2485,30 +2631,86 @@
                 center;
 
             background:
-                rgba(27,147,143,0.10);
+                rgba(27,147,143,0.09);
 
             color:
                 var(--teal-light);
 
             font-size:
                 18px;
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            transition:
+                .35s ease;
         }
 
 
+        .leadership-card:hover .role-icon {
+
+            transform:
+                translateY(-3px)
+                rotate(-3deg);
+
+            background:
+                rgba(27,147,143,0.15);
+
+            border-color:
+                rgba(27,147,143,0.34);
+
+            box-shadow:
+                0 8px 23px
+                rgba(27,147,143,0.15);
+        }
+
+
+        /* =====================================================
+           ROLE TITLE
+        ===================================================== */
+
         .leadership-card h3 {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            margin:
+                0 0 6px;
+
+            color:
+                #f4f7f8;
 
             font-size:
                 15px;
 
-            margin-bottom:
-                6px;
-
             line-height:
                 1.4;
+
+            letter-spacing:
+                -.15px;
         }
 
 
+        /* =====================================================
+           ORGANIZATION
+        ===================================================== */
+
         .leadership-card .organization {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            margin:
+                0 0 7px;
 
             color:
                 var(--teal-light);
@@ -2516,15 +2718,39 @@
             font-size:
                 12px;
 
+            line-height:
+                1.5;
+
             font-weight:
                 700;
 
-            margin-bottom:
-                6px;
+            transition:
+                .35s ease;
         }
 
 
+        .leadership-card:hover .organization {
+
+            text-shadow:
+                0 0 12px
+                rgba(27,147,143,0.12);
+        }
+
+
+        /* =====================================================
+           DATE / LOCATION
+        ===================================================== */
+
         .leadership-card p {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            margin:
+                0;
 
             color:
                 var(--muted);
@@ -2533,9 +2759,8 @@
                 11px;
 
             line-height:
-                1.5;
+                1.55;
         }
-
 
         /* =====================================================
            SKILLS
