@@ -3200,197 +3200,97 @@
 }
 
 
+```css
 /* =====================================================
    LANGUAGES & HOBBIES
 ===================================================== */
 
 .interest-extra {
+    max-width: 1250px;
+    margin: 25px auto 0;
+    padding: 24px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
 
-    max-width:
-        1250px;
+    border: 1px solid rgba(89,28,53,0.15);
+    border-radius: 20px;
 
-    margin:
-        25px auto 0;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.65),
+        rgba(247,242,232,0.85)
+    );
 
-    padding:
-        24px 30px;
+    backdrop-filter: blur(17px);
+    -webkit-backdrop-filter: blur(17px);
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    gap:
-        25px;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.08);
-
-    border-radius:
-        20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.04),
-            rgba(255,255,255,0.015)
-        );
-
-    backdrop-filter:
-        blur(17px);
-
-    -webkit-backdrop-filter:
-        blur(17px);
-
-    box-shadow:
-        0 16px 45px
-        rgba(0,0,0,0.16);
-
-    transition:
-        .4s cubic-bezier(.2,.8,.2,1);
+    box-shadow: 0 16px 45px rgba(52,45,47,0.12);
+    transition: .4s cubic-bezier(.2,.8,.2,1);
 }
-
 
 .interest-extra:hover {
-
-    border-color:
-        rgba(27,147,143,0.35);
-
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        0 22px 55px
-        rgba(0,0,0,0.25),
-
-        0 0 25px
-        rgba(27,147,143,0.045);
+    border-color: rgba(89,28,53,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 22px 55px rgba(52,45,47,0.18);
 }
 
-
-/* =====================================================
-   EXTRA SECTION TITLE
-===================================================== */
+/* EXTRA SECTION TITLE */
 
 .interest-extra-title {
-
-    color:
-        white;
-
-    font-size:
-        11px;
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        2px;
-
-    white-space:
-        nowrap;
+    color: #591C35;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    white-space: nowrap;
 }
 
-
-/* =====================================================
-   EXTRA ITEMS
-===================================================== */
+/* EXTRA ITEMS */
 
 .interest-extra-items {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        flex-end;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        9px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 9px;
 }
 
-
-/* =====================================================
-   PILLS
-===================================================== */
+/* PILLS */
 
 .interest-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
 
-    display:
-        inline-flex;
+    border: 1px solid rgba(89,28,53,0.25);
+    border-radius: 30px;
 
-    align-items:
-        center;
+    background: rgba(183,154,98,0.10);
+    color: #591C35;
 
-    gap:
-        7px;
-
-    padding:
-        8px 14px;
-
-    border:
-        1px solid
-        rgba(27,147,143,0.20);
-
-    border-radius:
-        30px;
-
-    background:
-        rgba(27,147,143,0.045);
-
-    color:
-        #591C35;
-
-    font-size:
-        11px;
-
-    font-weight:
-        600;
-
-    transition:
-        .3s ease;
+    font-size: 11px;
+    font-weight: 600;
+    transition: .3s ease;
 }
-
 
 .interest-pill small {
-
-    color:
-        var(--teal-light);
-
-    font-size:
-        9px;
-
-    font-weight:
-        700;
+    color: #B79A62;
+    font-size: 9px;
+    font-weight: 700;
 }
 
-
 .interest-pill:hover {
+    background: #591C35;
+    color: #F7F2E8;
+    border-color: #591C35;
+    box-shadow: 0 5px 15px rgba(89,28,53,0.18);
+    transform: translateY(-2px);
+}
 
-    background:
-        rgba(27,147,143,0.14);
-
-    color:
-        white;
-
-    border-color:
-        var(--teal);
-
-    box-shadow:
-        0 0 15px
-        rgba(27,147,143,0.10);
-
-    transform:
-        translateY(-2px);
+.interest-pill:hover small {
+    color: #B79A62;
 }
 
 
