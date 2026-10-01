@@ -24,29 +24,30 @@
            ROOT / GLOBAL
         ===================================================== */
 
-       :root {
+        :root {
 
-    --bg: #F7F2E8;
-    --bg-soft: #EFE6D8;
-    --card: rgba(255, 255, 255, 0.58);
+            --bg: #050c16;
+            --bg-soft: #07111d;
+            --card: rgba(10, 25, 38, 0.58);
 
-    --teal: #591C35;
-    --teal-light: #B79A62;
-    --teal-soft: rgba(183, 154, 98, 0.18);
+            --teal: #1b938f;
+            --teal-light: #24aaa4;
+            --teal-soft: rgba(27, 147, 143, 0.18);
 
-    --white: #32101F;
-    --text: #32101F;
-    --muted: #756B68;
+            --white: #f4f7fb;
+            --text: #c8d1dc;
+            --muted: #8996a5;
 
-    --border: rgba(89, 28, 53, 0.10);
-    --border-teal: rgba(183, 154, 98, 0.38);
+            --border: rgba(255,255,255,0.08);
+            --border-teal: rgba(27,147,143,0.38);
 
-    --shadow:
-        0 25px 80px rgba(0,0,0,0.42);
+            --shadow:
+                0 25px 80px rgba(0,0,0,0.42);
 
-    --transition:
-        0.4s cubic-bezier(.2,.8,.2,1);
-}
+            --transition:
+                0.4s cubic-bezier(.2,.8,.2,1);
+        }
+
 
         * {
 
@@ -285,7 +286,7 @@
 
             text-decoration: none;
 
-            color: #32101F;
+            color: #bfc8d3;
 
             font-size: 12px;
 
@@ -603,7 +604,7 @@
                 linear-gradient(
                     135deg,
                     var(--teal),
-                    #32101F,
+                    #0b6564,
                     var(--teal-light)
                 );
 
@@ -711,11 +712,11 @@
             clip-path: none;
 
             background:
-                #EFE6D8;
+                #111b27;
 
-         border:
-             2px solid 
-             rgba(89, 28, 53, 0.60);
+            border:
+                2px solid
+                rgba(27,147,143,0.60);
 
             box-shadow:
                 0 25px 80px
@@ -948,11 +949,11 @@
             border-radius: 50%;
 
             background:
-                #B79A62;
+                #6ed8d4;
 
             box-shadow:
-                0 0 12px #B79A62,
-                0 0 25px #B79A62;
+                0 0 12px #6ed8d4,
+                0 0 25px #6ed8d4;
 
             bottom: 50px;
             left: 15px;
@@ -1943,7 +1944,7 @@
         0 0 8px;
 
     color:
-        #32101F;
+        #f4f7f8;
 
     font-size:
         15px;
@@ -2317,7 +2318,7 @@
                 0 0 9px;
 
             color:
-                #32101F;
+                #f4f7f8;
 
             font-size:
                 21px;
@@ -2677,7 +2678,7 @@
                 0 0 6px;
 
             color:
-                #32101F;
+                #f4f7f8;
 
             font-size:
                 15px;
@@ -2706,7 +2707,7 @@
         0 0 7px;
 
     color:
-        #342D2F;
+        #f1f5f5;
 
     font-size:
         12px;
@@ -3086,7 +3087,7 @@
         0 0 14px;
 
     color:
-        #32101F;
+        #f5f7fa;
 
     font-size:
         20px;
@@ -3170,7 +3171,7 @@
         rgba(27,147,143,0.045);
 
     color:
-        #591C35;
+        #b7d8d7;
 
     font-size:
         10px;
@@ -3200,98 +3201,197 @@
 }
 
 
-```css
 /* =====================================================
    LANGUAGES & HOBBIES
 ===================================================== */
 
 .interest-extra {
-    max-width: 1250px;
-    margin: 25px auto 0;
-    padding: 24px 30px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
+    max-width:
+        1250px;
 
-    border: 1px solid rgba(89,28,53,0.15);
-    border-radius: 20px;
+    margin:
+        25px auto 0;
 
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.65),
-        rgba(247,242,232,0.85)
-    );
+    padding:
+        24px 30px;
 
-    backdrop-filter: blur(17px);
-    -webkit-backdrop-filter: blur(17px);
+    display:
+        flex;
 
-    box-shadow: 0 16px 45px rgba(0,0,0,0.16);
-    transition: .4s cubic-bezier(.2,.8,.2,1);
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius:
+        20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.04),
+            rgba(255,255,255,0.015)
+        );
+
+    backdrop-filter:
+        blur(17px);
+
+    -webkit-backdrop-filter:
+        blur(17px);
+
+    box-shadow:
+        0 16px 45px
+        rgba(0,0,0,0.16);
+
+    transition:
+        .4s cubic-bezier(.2,.8,.2,1);
 }
+
 
 .interest-extra:hover {
-    border-color: rgba(89,28,53,0.35);
-    transform: translateY(-4px);
-    box-shadow: 0 22px 55px rgba(0,0,0,0.18);
+
+    border-color:
+        rgba(27,147,143,0.35);
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 22px 55px
+        rgba(0,0,0,0.25),
+
+        0 0 25px
+        rgba(27,147,143,0.045);
 }
 
-/* EXTRA SECTION TITLE */
+
+/* =====================================================
+   EXTRA SECTION TITLE
+===================================================== */
 
 .interest-extra-title {
-    color: #591C35;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    white-space: nowrap;
+
+    color:
+        white;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+    white-space:
+        nowrap;
 }
 
-/* EXTRA ITEMS */
+
+/* =====================================================
+   EXTRA ITEMS
+===================================================== */
 
 .interest-extra-items {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 9px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        flex-end;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        9px;
 }
 
-/* PILLS */
+
+/* =====================================================
+   PILLS
+===================================================== */
 
 .interest-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 8px 14px;
 
-    border: 1px solid rgba(89,28,53,0.20);
-    border-radius: 30px;
+    display:
+        inline-flex;
 
-    background: rgba(183,154,98,0.08);
-    color: #591C35;
+    align-items:
+        center;
 
-    font-size: 11px;
-    font-weight: 600;
-    transition: .3s ease;
+    gap:
+        7px;
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid
+        rgba(27,147,143,0.20);
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(27,147,143,0.045);
+
+    color:
+        #b7d8d7;
+
+    font-size:
+        11px;
+
+    font-weight:
+        600;
+
+    transition:
+        .3s ease;
 }
+
 
 .interest-pill small {
-    color: #B79A62;
-    font-size: 9px;
-    font-weight: 700;
+
+    color:
+        var(--teal-light);
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
 }
+
 
 .interest-pill:hover {
-    background: #591C35;
-    color: #F7F2E8;
-    border-color: #591C35;
-    box-shadow: 0 0 15px rgba(89,28,53,0.10);
-    transform: translateY(-2px);
-}
 
-.interest-pill:hover small {
-    color: #B79A62;
+    background:
+        rgba(27,147,143,0.14);
+
+    color:
+        white;
+
+    border-color:
+        var(--teal);
+
+    box-shadow:
+        0 0 15px
+        rgba(27,147,143,0.10);
+
+    transform:
+        translateY(-2px);
 }
 
 
@@ -3746,7 +3846,7 @@
                 rgba(255,255,255,0.11);
 
             color:
-                #342D2F;
+                #cbd4df;
 
             background:
                 rgba(255,255,255,0.025);
@@ -3868,7 +3968,7 @@
                 20px;
 
             color:
-                #756B68;
+                #657282;
 
             font-size:
                 10px;
